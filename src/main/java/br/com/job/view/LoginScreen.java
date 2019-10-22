@@ -32,6 +32,8 @@ public class LoginScreen extends Application {
 
 		initLayout();
 
+		// comentários
+		
 		Scene scene = new Scene(basePane);
 		stage.setTitle("JOB - LOGIN");
 		stage.setScene(scene);
