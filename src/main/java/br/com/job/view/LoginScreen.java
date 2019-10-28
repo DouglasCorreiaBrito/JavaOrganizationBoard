@@ -1,6 +1,10 @@
 package br.com.job.view;
 
+import javax.swing.JOptionPane;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,20 +27,62 @@ public class LoginScreen extends Application {
 	private PasswordField passwordField;
 	private Button loginButton;
 	private Button newUserButton;
-	private Stage stage;
+	private static Stage stage;
 
 	@Override
 	public void start(Stage stage) throws Exception {
 
 		initComponents();
-
 		initLayout();
+		iniListeners();
+		LoginScreen.stage = stage;
 
 		Scene scene = new Scene(basePane);
+		stage.setResizable(false);
 		stage.setTitle("JOB - LOGIN");
 		stage.setScene(scene);
 		stage.show();
 
+	}
+
+	private void iniListeners() {
+		newUserButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				callCreateNewUserScreen();
+
+			}
+		});
+		
+		loginButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent event) {
+				
+				if (loginTextField.getText().equals("admin") && passwordField.getText().equals("admin")) {
+					JOptionPane.showMessageDialog(null, "Você logou");
+				}else {
+					JOptionPane.showMessageDialog(null, "Usuário Inválido");
+				}
+			}
+		});
+	}
+
+	private void callCreateNewUserScreen() {
+		
+		try {
+			new NewUserScreen().start(new Stage());
+			LoginScreen.getStage().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 
 	private void initLayout() {
@@ -77,13 +123,14 @@ public class LoginScreen extends Application {
 		formPane = new AnchorPane();
 		formPane.setPrefSize(300, 500);
 		formPane.setStyle("-fx-background-color : #0A2C2E;");
+
 		welcomeLabel = new Label("BEM-VINDO");
 		welcomeLabel.setStyle("-fx-font-size : 36px; -fx-font-color : #FFFFFF ");
 
 		jobLabel = new Label("JAVA ORGANIZATION BOARD");
 		jobLabel.setStyle("-fx-font-size : 24px; -fx-font-color : #FFFFFF ");
 
-		logoJob = new Image(getClass().getResourceAsStream("logoJOB.png"));
+		logoJob = new Image(getClass().getResourceAsStream("images\\logoJOB.png"));
 		logoJobView = new ImageView(logoJob);
 		logoJobView.setFitHeight(250);
 		logoJobView.setFitWidth(250);
