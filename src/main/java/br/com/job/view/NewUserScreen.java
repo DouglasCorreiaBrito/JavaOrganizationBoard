@@ -35,6 +35,7 @@ public class NewUserScreen extends Application {
 		initComponents();
 		initLayout();
 		Scene scene = new Scene(basePane);
+		arg0.setResizable(false);
 		arg0.setTitle("JOB - Novo Usuário");
 		arg0.setScene(scene);
 		arg0.show();

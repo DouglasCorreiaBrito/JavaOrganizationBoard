@@ -1,11 +1,9 @@
 package br.com.job.view;
 
-import javax.swing.JOptionPane;
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -46,29 +44,33 @@ public class LoginScreen extends Application {
 	}
 
 	private void iniListeners() {
-		newUserButton.setOnAction(new EventHandler<ActionEvent>() {
 
-			public void handle(ActionEvent event) {
-				callCreateNewUserScreen();
+		newUserButton.setOnAction(e -> callCreateNewUserScreen());
+		loginButton.setOnAction(e -> validateUser());
+	}
 
-			}
-		});
-		
-		loginButton.setOnAction(new EventHandler<ActionEvent>() {
+	private void validateUser() {
+		if (loginTextField.getText().equals("admin") && passwordField.getText().equals("admin")) {
+			callBaseStage();
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro");
+			alert.setContentText("O usuário ou senha inválida");
+			alert.show();
+		}
+	}
 
-			public void handle(ActionEvent event) {
-				
-				if (loginTextField.getText().equals("admin") && passwordField.getText().equals("admin")) {
-					JOptionPane.showMessageDialog(null, "Você logou");
-				}else {
-					JOptionPane.showMessageDialog(null, "Usuário Inválido");
-				}
-			}
-		});
+	private void callBaseStage() {
+		try {
+			new BaseStage().start(new Stage());
+			LoginScreen.getStage().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void callCreateNewUserScreen() {
-		
+
 		try {
 			new NewUserScreen().start(new Stage());
 			LoginScreen.getStage().close();
@@ -76,13 +78,13 @@ public class LoginScreen extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Stage getStage() {
 		return stage;
 	}
 
 	public void setStage(Stage stage) {
-		this.stage = stage;
+		LoginScreen.stage = stage;
 	}
 
 	private void initLayout() {
