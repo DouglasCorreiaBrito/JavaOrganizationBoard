@@ -38,7 +38,7 @@ public class NewUserScreen extends Application {
 		NewUserScreen.stage = stage;
 		Scene scene = new Scene(basePane);
 		stage.setResizable(false);
-		stage.setTitle("JOB - Novo Usuário");
+		stage.setTitle("JOB - Novo Usuï¿½rio");
 		stage.setScene(scene);
 		stage.show();
 
@@ -54,7 +54,7 @@ public class NewUserScreen extends Application {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
 		userImage = cnus.insertImageProfileUser();
 		userImageView = new ImageView(userImage);
-		//TODO enviar essa imagem pro usuário, tentar trocar a imagem no pane
+		//TODO enviar essa imagem pro usuï¿½rio, tentar trocar a imagem no pane
 	}
 
 	private void clearTextFields() {
@@ -128,7 +128,7 @@ public class NewUserScreen extends Application {
 		formPane.setStyle("-fx-background-color : #FFFFFF;");
 
 		nameLabel = new Label("Nome: ");
-		userLabel = new Label("Usuário: ");
+		userLabel = new Label("Usuï¿½rio: ");
 		passwordLabel = new Label("Senha: ");
 
 		nameTextField = new TextField();
@@ -142,7 +142,7 @@ public class NewUserScreen extends Application {
 		cleanButton = new Button("Limpar");
 		fotoButton = new Button("Inserir foto");
 
-		userImage = new Image(getClass().getResourceAsStream("images\\profile.png"));
+		userImage = new Image(getClass().getResourceAsStream("images"+System.lineSeparator()+"profile.png"));
 		userImageView = new ImageView(userImage);
 		userImageView.setFitHeight(100);
 		userImageView.setFitWidth(100);

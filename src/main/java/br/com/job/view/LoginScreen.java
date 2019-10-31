@@ -64,7 +64,7 @@ public class LoginScreen extends Application {
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erro");
-			alert.setContentText("O usu·rio ou senha inv·lida");
+			alert.setContentText("O usu√°rio ou senha inv√°lida");
 			alert.show();
 		}
 	}
@@ -141,7 +141,7 @@ public class LoginScreen extends Application {
 		jobLabel = new Label("JAVA ORGANIZATION BOARD");
 		jobLabel.setStyle("-fx-font-size : 24px; -fx-font-color : #FFFFFF ");
 
-		logoJob = new Image(getClass().getResourceAsStream("images\\logoJOB.png"));
+		logoJob = new Image(getClass().getResourceAsStream("images"+System.lineSeparator()+"logoJOB.png"));
 		logoJobView = new ImageView(logoJob);
 		logoJobView.setFitHeight(250);
 		logoJobView.setFitWidth(250);
@@ -158,7 +158,7 @@ public class LoginScreen extends Application {
 		loginButton.setPrefWidth(200);
 		loginButton.setStyle("-fx-background-color : #16ED5E;");
 
-		alert.newUserButton = new Button("Criar Usu·rio");
+		alert.newUserButton = new Button("Criar Usu√°rio");
 		alert.newUserButton.setPrefWidth(200);
 		alert.newUserButton.setStyle("-fx-background-color : #16ED5E;");
 	}

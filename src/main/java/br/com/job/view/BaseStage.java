@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Label;
 import java.awt.Toolkit;
 
+import br.com.job.control.BaseStageControl;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,33 +12,40 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class BaseStage extends Application{
 	
 	private static Stage stage;
-	private static AnchorPane basePane;
-	private AnnotationScene annotationScene;
-	private SprintScene sprintScene;
+	private static GridPane basePane;
+
+	Pane telaDaDireita;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
 		initComponets();
 		BaseStage.stage = primaryStage;
-		AnnotationScene annotationScene = new AnnotationScene(basePane);
-		stage.setScene(annotationScene);
-		stage.setTitle("Anotações");
+		Scene scene = new Scene(basePane);
+
+		stage.setScene(scene);
+		stage.setTitle("JOB - Java Organization Board");
 		stage.show();
 	}
 
 	private void initComponets() {
 		
 		Dimension d = obterResolucaoTela();
-		basePane = new AnchorPane();
+		basePane = new GridPane();
 		basePane.setPrefSize( d.getWidth(),d.getHeight());
-		
+
+		telaDaDireita = new Pane();
+
+		basePane.add(new MenuView(basePane, telaDaDireita), 0, 0);
+		basePane.add(telaDaDireita, 1, 0);
+
 	}
 
 	private Dimension obterResolucaoTela() {
@@ -54,8 +62,5 @@ public class BaseStage extends Application{
 	public static Stage getStage() {
 		return stage;
 	}
-
-
-
 
 }
