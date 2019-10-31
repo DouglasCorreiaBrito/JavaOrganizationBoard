@@ -1,11 +1,10 @@
 package br.com.job.view;
 
-import javax.swing.JOptionPane;
-
+import br.com.job.control.ControlLoginScreen;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -17,6 +16,13 @@ import javafx.stage.Stage;
 
 public class LoginScreen extends Application {
 
+	public static class Alerts {
+		public Button newUserButton;
+
+		public Alerts() {
+		}
+	}
+
 	private AnchorPane basePane;
 	private AnchorPane formPane;
 	private Label welcomeLabel;
@@ -26,7 +32,7 @@ public class LoginScreen extends Application {
 	private TextField loginTextField;
 	private PasswordField passwordField;
 	private Button loginButton;
-	private Button newUserButton;
+	private Alerts alert = new Alerts();
 	private static Stage stage;
 
 	@Override
@@ -46,29 +52,34 @@ public class LoginScreen extends Application {
 	}
 
 	private void iniListeners() {
-		newUserButton.setOnAction(new EventHandler<ActionEvent>() {
 
-			public void handle(ActionEvent event) {
-				callCreateNewUserScreen();
+		alert.newUserButton.setOnAction(e -> callCreateNewUserScreen());
+		loginButton.setOnAction(e -> validateUser());
+	}
 
-			}
-		});
-		
-		loginButton.setOnAction(new EventHandler<ActionEvent>() {
+	private void validateUser() {
+		ControlLoginScreen cls = new ControlLoginScreen();
+		if (cls.userAuthentication(loginTextField.getText(), passwordField.getText())) {
+			callBaseStage();
+		}else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro");
+			alert.setContentText("O usu√°rio ou senha inv√°lida");
+			alert.show();
+		}
+	}
 
-			public void handle(ActionEvent event) {
-				
-				if (loginTextField.getText().equals("admin") && passwordField.getText().equals("admin")) {
-					JOptionPane.showMessageDialog(null, "VocÍ logou");
-				}else {
-					JOptionPane.showMessageDialog(null, "Usu·rio Inv·lido");
-				}
-			}
-		});
+	private void callBaseStage() {
+		try {
+			new BaseStage().start(new Stage());
+			LoginScreen.getStage().close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void callCreateNewUserScreen() {
-		
+
 		try {
 			new NewUserScreen().start(new Stage());
 			LoginScreen.getStage().close();
@@ -76,13 +87,13 @@ public class LoginScreen extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Stage getStage() {
 		return stage;
 	}
 
 	public void setStage(Stage stage) {
-		this.stage = stage;
+		LoginScreen.stage = stage;
 	}
 
 	private void initLayout() {
@@ -108,9 +119,9 @@ public class LoginScreen extends Application {
 		loginButton.setLayoutX(55);
 		loginButton.setLayoutY(250);
 
-		newUserButton.setLayoutX(55);
-		newUserButton.setLayoutY(450);
-		formPane.getChildren().addAll(loginTextField, passwordField, newUserButton, loginButton, welcomeLabel);
+		alert.newUserButton.setLayoutX(55);
+		alert.newUserButton.setLayoutY(450);
+		formPane.getChildren().addAll(loginTextField, passwordField, alert.newUserButton, loginButton, welcomeLabel);
 		basePane.getChildren().addAll(formPane, logoJobView, jobLabel);
 	}
 
@@ -130,7 +141,7 @@ public class LoginScreen extends Application {
 		jobLabel = new Label("JAVA ORGANIZATION BOARD");
 		jobLabel.setStyle("-fx-font-size : 24px; -fx-font-color : #FFFFFF ");
 
-		logoJob = new Image(getClass().getResourceAsStream("images\\logoJOB.png"));
+		logoJob = new Image(getClass().getResourceAsStream("images"+System.lineSeparator()+"logoJOB.png"));
 		logoJobView = new ImageView(logoJob);
 		logoJobView.setFitHeight(250);
 		logoJobView.setFitWidth(250);
@@ -147,9 +158,9 @@ public class LoginScreen extends Application {
 		loginButton.setPrefWidth(200);
 		loginButton.setStyle("-fx-background-color : #16ED5E;");
 
-		newUserButton = new Button("Criar Usu·rio");
-		newUserButton.setPrefWidth(200);
-		newUserButton.setStyle("-fx-background-color : #16ED5E;");
+		alert.newUserButton = new Button("Criar Usu√°rio");
+		alert.newUserButton.setPrefWidth(200);
+		alert.newUserButton.setStyle("-fx-background-color : #16ED5E;");
 	}
 
 	public static void main(String[] args) {
