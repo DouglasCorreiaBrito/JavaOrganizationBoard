@@ -1,6 +1,7 @@
 package br.com.job.view;
 
 import br.com.job.control.ControlNewUserScreen;
+import br.com.job.utils.FileHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,7 +39,7 @@ public class NewUserScreen extends Application {
 		NewUserScreen.stage = stage;
 		Scene scene = new Scene(basePane);
 		stage.setResizable(false);
-		stage.setTitle("JOB - Novo Usu�rio");
+		stage.setTitle("JOB - Novo Usuário");
 		stage.setScene(scene);
 		stage.show();
 
@@ -54,7 +55,7 @@ public class NewUserScreen extends Application {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
 		userImage = cnus.insertImageProfileUser();
 		userImageView = new ImageView(userImage);
-		//TODO enviar essa imagem pro usu�rio, tentar trocar a imagem no pane
+		//TODO enviar essa imagem pro usuário, tentar trocar a imagem no pane
 	}
 
 	private void clearTextFields() {
@@ -76,7 +77,6 @@ public class NewUserScreen extends Application {
 	}
 
 	private static Stage getStage() {
-		// TODO Auto-generated method stub
 		return stage;
 	}
 
@@ -128,7 +128,7 @@ public class NewUserScreen extends Application {
 		formPane.setStyle("-fx-background-color : #FFFFFF;");
 
 		nameLabel = new Label("Nome: ");
-		userLabel = new Label("Usu�rio: ");
+		userLabel = new Label("Usuário: ");
 		passwordLabel = new Label("Senha: ");
 
 		nameTextField = new TextField();
@@ -142,7 +142,7 @@ public class NewUserScreen extends Application {
 		cleanButton = new Button("Limpar");
 		fotoButton = new Button("Inserir foto");
 
-		userImage = new Image(getClass().getResourceAsStream("images"+System.lineSeparator()+"profile.png"));
+		userImage = new Image(FileHandler.getImage("profile.png"));
 		userImageView = new ImageView(userImage);
 		userImageView.setFitHeight(100);
 		userImageView.setFitWidth(100);
