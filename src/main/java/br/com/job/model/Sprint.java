@@ -1,7 +1,5 @@
 package br.com.job.model;
 
-import br.com.job.model.Task;
-
 import java.util.List;
 
 public class Sprint {
@@ -26,5 +24,4 @@ public class Sprint {
 	public void deleteTask(Task t) {
 
 	}
-
 }

@@ -7,6 +7,8 @@ import br.com.job.model.User;
 
 public class ControlLoginScreen {
 
+	private User loggedUser;
+
 	public boolean userAuthentication(String user, String password) {
 
 		UserDAO dao = new UserDAO();
@@ -14,10 +16,16 @@ public class ControlLoginScreen {
 
 		for (User usuario : users) {
 			if (usuario.getUser().equals(user) && usuario.getPassword().equals(password)) {
+				this.loggedUser = usuario;
 				return true;
 			}
 		}
 		return false;
 
 	}
+
+	public User getLoggedUser(){
+		return loggedUser;
+	}
+
 }

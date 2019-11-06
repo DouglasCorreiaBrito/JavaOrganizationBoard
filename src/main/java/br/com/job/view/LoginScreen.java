@@ -1,6 +1,7 @@
 package br.com.job.view;
 
 import br.com.job.control.ControlLoginScreen;
+import br.com.job.utils.FileHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -35,6 +36,8 @@ public class LoginScreen extends Application {
 	private Alerts alert = new Alerts();
 	private static Stage stage;
 
+	ControlLoginScreen cls = new ControlLoginScreen();
+
 	@Override
 	public void start(Stage stage) throws Exception {
 
@@ -58,7 +61,6 @@ public class LoginScreen extends Application {
 	}
 
 	private void validateUser() {
-		ControlLoginScreen cls = new ControlLoginScreen();
 		if (cls.userAuthentication(loginTextField.getText(), passwordField.getText())) {
 			callBaseStage();
 		}else {
@@ -71,7 +73,7 @@ public class LoginScreen extends Application {
 
 	private void callBaseStage() {
 		try {
-			new BaseStage().start(new Stage());
+			new BaseStage(cls.getLoggedUser()).start(new Stage());
 			LoginScreen.getStage().close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,7 +123,7 @@ public class LoginScreen extends Application {
 
 		alert.newUserButton.setLayoutX(55);
 		alert.newUserButton.setLayoutY(450);
-		formPane.getChildren().addAll(loginTextField, passwordField, alert.newUserButton, loginButton, welcomeLabel);
+		formPane.getChildren().addAll(loginTextField, passwordField, loginButton, alert.newUserButton, welcomeLabel);
 		basePane.getChildren().addAll(formPane, logoJobView, jobLabel);
 	}
 
@@ -141,7 +143,7 @@ public class LoginScreen extends Application {
 		jobLabel = new Label("JAVA ORGANIZATION BOARD");
 		jobLabel.setStyle("-fx-font-size : 24px; -fx-font-color : #FFFFFF ");
 
-		logoJob = new Image(getClass().getResourceAsStream("images"+System.lineSeparator()+"logoJOB.png"));
+		logoJob = new Image(FileHandler.getImage("logoJOB.png"));
 		logoJobView = new ImageView(logoJob);
 		logoJobView.setFitHeight(250);
 		logoJobView.setFitWidth(250);
