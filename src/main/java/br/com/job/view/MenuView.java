@@ -56,13 +56,13 @@ public class MenuView extends FlowPane {
 
         btnSprint.setOnAction(e -> controller.changeScreen(new SprintPane(controller)));
 
-        btnAgenda.setOnAction(e -> controller.changeScreen(new Pane()));
+        btnAgenda.setOnAction(e -> controller.changeScreen(new CalendarPane(controller)));
 
         btnDesempenho.setOnAction(e -> controller.changeScreen(new Pane()));
 
         btnLogout.setOnAction(e -> controller.logout());
 
-        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnLogout);
+        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnLogout);
 
         setStyle("-fx-background-color: #000;");
 

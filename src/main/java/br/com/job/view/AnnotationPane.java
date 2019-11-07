@@ -11,44 +11,41 @@ import java.util.Date;
 
 public class AnnotationPane extends FlowPane {
 
-    MenuControl controller;
+	MenuControl controller;
 
-    public AnnotationPane(MenuControl controller) {
+	public AnnotationPane(MenuControl controller) {
 
-        this.controller = controller;
+		this.controller = controller;
 
-        setVgap(50);
-        setHgap(50);
+		setVgap(50);
+		setHgap(50);
 
-        for (int i = 0; i < 10   ; i++) {
-            Annotation annotation = new Annotation();
+		for (int i = 0; i < 10; i++) {
+			Annotation annotation = new Annotation();
 
-            annotation.setTitle("Título " + i);
-            annotation.setDescription("Little description about the annotation. I will write something here just to test" +
-                            " this functionality. This is just a test, we will have more things to write with the proper classes");
-            annotation.setExpireDate(new Date());
+			annotation.setTitle("Título " + i);
+			annotation
+					.setDescription("Little description about the annotation. I will write something here just to test"
+							+ " this functionality. This is just a test, we will have more things to write with the proper classes");
+			annotation.setExpireDate(new Date());
 
-            getChildren().add(new AnnotationCard(annotation));
-        }
+			getChildren().add(new AnnotationCard(annotation));
+		}
 
-        FlowPane newCardContainter = new FlowPane();
-        newCardContainter.setMinWidth(250);
-        newCardContainter.setMaxWidth(250);
+		FlowPane newCardContainter = new FlowPane();
+		newCardContainter.setMinWidth(250);
+		newCardContainter.setMaxWidth(250);
 
-        Button newCard = new Button("+");
-        newCard.setStyle("-fx-background-radius: 0em; " +
-                "-fx-background-color: #588ed6; " +
-                "-fx-max-height: 100px;" +
-                "-fx-min-height: 100px; " +
-                "-fx-min-width: 100px; " +
-                "-fx-max-width: 100px; ");
-        newCard.setOnAction(e -> controller.changeScreen(new AnnotationEdit(controller)));
+		Button newCard = new Button("+");
+		newCard.setStyle("-fx-background-radius: 0em; " + "-fx-background-color: #588ed6; " + "-fx-max-height: 100px;"
+				+ "-fx-min-height: 100px; " + "-fx-min-width: 100px; " + "-fx-max-width: 100px; ");
+		newCard.setOnAction(e -> controller.changeScreen(new AnnotationEdit(controller)));
 
-        newCardContainter.setAlignment(Pos.CENTER);
-        newCardContainter.getChildren().add(newCard);
+		newCardContainter.setAlignment(Pos.CENTER);
+		newCardContainter.getChildren().add(newCard);
 
-        getChildren().add(newCardContainter);
+		getChildren().add(newCardContainter);
 
-    }
+	}
 
 }

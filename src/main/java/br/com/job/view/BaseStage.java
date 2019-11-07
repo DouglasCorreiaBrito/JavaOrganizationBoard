@@ -55,7 +55,7 @@ public class BaseStage extends Application{
 
 	}
 
-	private Dimension obterResolucaoTela() {
+	static Dimension obterResolucaoTela() {
 		
 		Toolkit tk = Toolkit.getDefaultToolkit();
 	    Dimension dimensionScreen = tk.getScreenSize();
