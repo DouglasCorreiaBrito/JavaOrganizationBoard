@@ -54,12 +54,10 @@ public class Annotation implements Persistent{
 		this.expireDate = expireDate;
 	}
 
-	@Override
 	public void save() {
 
 	}
 
-	@Override
 	public Persistent search() {
 		return null;
 	}

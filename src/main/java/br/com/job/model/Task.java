@@ -17,12 +17,12 @@ public class Task implements Persistent {
 	public void changeStatus(Status s) {
 
 	}
-
+	
 	@Override
 	public void save() {
 
 	}
-
+	
 	@Override
 	public Persistent search() {
 		return null;

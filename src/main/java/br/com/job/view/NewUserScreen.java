@@ -4,10 +4,7 @@ import br.com.job.control.ControlNewUserScreen;
 import br.com.job.utils.FileHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -55,7 +52,7 @@ public class NewUserScreen extends Application {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
 		userImage = cnus.insertImageProfileUser();
 		userImageView = new ImageView(userImage);
-		//TODO enviar essa imagem pro usuário, tentar trocar a imagem no pane
+		// TODO enviar essa imagem pro usuário, tentar trocar a imagem no pane
 	}
 
 	private void clearTextFields() {
@@ -66,14 +63,19 @@ public class NewUserScreen extends Application {
 
 	private void createNewUser() {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
-		cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(), userImage,
-				userImageView);
-		try {
-			new LoginScreen().start(new Stage());
-			NewUserScreen.getStage().close();
-		} catch (Exception e) {
-			e.printStackTrace();
+
+		boolean isCreate = cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(),
+				userImage, userImageView);
+
+		if (isCreate) {
+			try {
+				new LoginScreen().start(new Stage());
+				NewUserScreen.getStage().close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
 	}
 
 	private static Stage getStage() {
@@ -89,14 +91,17 @@ public class NewUserScreen extends Application {
 		nameLabel.setLayoutY(200);
 		nameTextField.setLayoutX(140);
 		nameTextField.setLayoutY(195);
+		nameTextField.setText("");
 
 		userLabel.setLayoutX(90);
 		userLabel.setLayoutY(250);
 		userTextField.setLayoutX(140);
 		userTextField.setLayoutY(245);
+		userTextField.setText("");
 
 		passwordField.setLayoutX(140);
 		passwordField.setLayoutY(290);
+		passwordField.setText("");
 		passwordLabel.setLayoutX(90);
 		passwordLabel.setLayoutY(295);
 
