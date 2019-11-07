@@ -20,7 +20,7 @@ public class AnnotationPane extends FlowPane {
         setVgap(50);
         setHgap(50);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10   ; i++) {
             Annotation annotation = new Annotation();
 
             annotation.setTitle("Título " + i);

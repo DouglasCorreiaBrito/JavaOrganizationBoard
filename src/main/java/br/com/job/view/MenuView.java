@@ -62,7 +62,7 @@ public class MenuView extends FlowPane {
 
         btnLogout.setOnAction(e -> controller.logout());
 
-        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnDesempenho, btnLogout);
+        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnLogout);
 
         setStyle("-fx-background-color: #000;");
 

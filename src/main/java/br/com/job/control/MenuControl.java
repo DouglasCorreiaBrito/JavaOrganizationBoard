@@ -4,6 +4,7 @@ import br.com.job.model.User;
 import br.com.job.view.BaseStage;
 import br.com.job.view.LoginScreen;
 import javafx.geometry.Insets;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -12,7 +13,7 @@ public class MenuControl {
 
     private User user;
     private GridPane backgroundPane;
-    private Pane secondScreen;
+    private ScrollPane secondScreen;
 
     public MenuControl(GridPane backgroundPane, Pane secondScreen, User loggedUser) {
 
@@ -22,7 +23,7 @@ public class MenuControl {
         secondScreen.setPadding(new Insets(30));
 
         this.backgroundPane = backgroundPane;
-        this.secondScreen = secondScreen;
+        this.secondScreen = new ScrollPane();
     }
 
     public void changeScreen(Pane secondScreen){
@@ -33,8 +34,14 @@ public class MenuControl {
 
         secondScreen.setPadding(new Insets(30));
 
-        backgroundPane.add(secondScreen, 1, 0);
-        this.secondScreen = secondScreen;
+        ScrollPane scrollPane = new ScrollPane(secondScreen);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToHeight(true);
+        secondScreen.setStyle(secondScreen.getStyle() + "-fx-background-color: #444444;");
+
+        backgroundPane.add(scrollPane, 1, 0);
+        this.secondScreen = scrollPane;
     }
 
     public void logout() {
