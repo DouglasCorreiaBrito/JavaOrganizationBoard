@@ -20,6 +20,7 @@ public class MenuView extends FlowPane {
         Button btnSprint = new Button("Sprints");
         Button btnAgenda = new Button("Agenda");
         Button btnDesempenho = new Button("Desempenho");
+        Button btnLogout = new Button("Logout");
 
         Label userName = new Label(loggedUser.getName());
         userName.setStyle("-fx-max-height: 50px;" +
@@ -29,7 +30,7 @@ public class MenuView extends FlowPane {
         userName.setTextFill(Color.WHITE);
         userName.setAlignment(Pos.CENTER);
 
-        ImageView userImageView = new ImageView(new Image(FileHandler.getImage("profilewhite.png")));
+        ImageView userImageView = loggedUser.getViewerImage();
         userImageView.setFitWidth(250);
         userImageView.setFitHeight(250);
 
@@ -49,6 +50,7 @@ public class MenuView extends FlowPane {
         btnSprint.setStyle(btnStyle);
         btnAgenda.setStyle(btnStyle);
         btnDesempenho.setStyle(btnStyle);
+        btnLogout.setStyle(btnStyle);
 
         btnAnnotation.setOnAction(e -> controller.changeScreen(new AnnotationPane(controller)));
 
@@ -58,7 +60,9 @@ public class MenuView extends FlowPane {
 
         btnDesempenho.setOnAction(e -> controller.changeScreen(new Pane()));
 
-        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnDesempenho);
+        btnLogout.setOnAction(e -> controller.logout());
+
+        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnDesempenho, btnLogout);
 
         setStyle("-fx-background-color: #000;");
 

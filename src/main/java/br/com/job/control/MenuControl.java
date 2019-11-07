@@ -1,9 +1,12 @@
 package br.com.job.control;
 
 import br.com.job.model.User;
+import br.com.job.view.BaseStage;
+import br.com.job.view.LoginScreen;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MenuControl {
 
@@ -32,8 +35,15 @@ public class MenuControl {
 
         backgroundPane.add(secondScreen, 1, 0);
         this.secondScreen = secondScreen;
-
-
-
     }
+
+    public void logout() {
+        try {
+            new LoginScreen().start(new Stage());
+            BaseStage.getStage().close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -13,14 +13,13 @@ import javafx.stage.FileChooser;
 public class ControlNewUserScreen {
 
 	public void create(String name, String username, String password, Image userImage, ImageView userImageView) {
-
 		User user = new User(name, username, password, userImage, userImageView);
 		UserDAO dao = new UserDAO();
 		dao.saveUser(user);
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Tela de Informação");
+		alert.setTitle("Tela de InformaÃ§Ã£o");
 		alert.setHeaderText("Sucesso");
-		alert.setContentText("Você acaba de criar um novo usuário");
+		alert.setContentText("VocÃª acaba de criar um novo usuÃ¡rio");
 		alert.showAndWait();
 	}
 

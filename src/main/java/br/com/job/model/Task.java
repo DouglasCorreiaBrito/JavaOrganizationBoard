@@ -5,13 +5,15 @@ import java.util.Date;
 public class Task implements Persistent {
 
 	private int id;
+
+	private String title;
+
 	private String description;
 	private Status status;
 	private int hoursToSpend;
 	private int hoursSpent;
 	private User assignee;
 	private Date previewDate;
-
 	public void changeStatus(Status s) {
 
 	}
@@ -32,6 +34,14 @@ public class Task implements Persistent {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
