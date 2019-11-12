@@ -13,6 +13,7 @@ public class CalendarPane extends FlowPane {
 	public CalendarPane(MenuControl controller) {
 		Schedule schedule = new Schedule(null);
 		this.controller = controller;
+		setStyle("-fx-background-color: #FFFFFF");
 		getChildren().add(new CalendarBuilder(schedule));
 		
 	}
