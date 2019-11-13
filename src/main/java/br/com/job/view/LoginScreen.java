@@ -17,12 +17,6 @@ import javafx.stage.Stage;
 
 public class LoginScreen extends Application {
 
-	public static class Alerts {
-		public Button newUserButton;
-
-		public Alerts() {
-		}
-	}
 
 	private AnchorPane basePane;
 	private AnchorPane formPane;
@@ -33,7 +27,7 @@ public class LoginScreen extends Application {
 	private TextField loginTextField;
 	private PasswordField passwordField;
 	private Button loginButton;
-	private Alerts alert = new Alerts();
+	private Button newUserButton;
 	private static Stage stage;
 
 	ControlLoginScreen cls = new ControlLoginScreen();
@@ -56,7 +50,7 @@ public class LoginScreen extends Application {
 
 	private void iniListeners() {
 
-		alert.newUserButton.setOnAction(e -> callCreateNewUserScreen());
+		newUserButton.setOnAction(e -> callCreateNewUserScreen());
 		loginButton.setOnAction(e -> validateUser());
 	}
 
@@ -121,9 +115,9 @@ public class LoginScreen extends Application {
 		loginButton.setLayoutX(55);
 		loginButton.setLayoutY(250);
 
-		alert.newUserButton.setLayoutX(55);
-		alert.newUserButton.setLayoutY(450);
-		formPane.getChildren().addAll(loginTextField, passwordField, loginButton, alert.newUserButton, welcomeLabel);
+		newUserButton.setLayoutX(55);
+		newUserButton.setLayoutY(450);
+		formPane.getChildren().addAll(loginTextField, passwordField, loginButton, newUserButton, welcomeLabel);
 		basePane.getChildren().addAll(formPane, logoJobView, jobLabel);
 	}
 
@@ -160,9 +154,9 @@ public class LoginScreen extends Application {
 		loginButton.setPrefWidth(200);
 		loginButton.setStyle("-fx-background-color : #16ED5E;");
 
-		alert.newUserButton = new Button("Criar Usuário");
-		alert.newUserButton.setPrefWidth(200);
-		alert.newUserButton.setStyle("-fx-background-color : #16ED5E;");
+		newUserButton = new Button("Criar Usuário");
+		newUserButton.setPrefWidth(200);
+		newUserButton.setStyle("-fx-background-color : #16ED5E;");
 	}
 
 	public static void main(String[] args) {

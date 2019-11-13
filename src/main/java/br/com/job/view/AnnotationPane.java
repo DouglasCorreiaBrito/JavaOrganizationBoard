@@ -1,13 +1,12 @@
 package br.com.job.view;
 
+import java.util.Date;
+
 import br.com.job.control.MenuControl;
 import br.com.job.model.Annotation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-
-import java.util.Date;
 
 public class AnnotationPane extends FlowPane {
 

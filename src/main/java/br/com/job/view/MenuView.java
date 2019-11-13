@@ -2,11 +2,9 @@ package br.com.job.view;
 
 import br.com.job.control.MenuControl;
 import br.com.job.model.User;
-import br.com.job.utils.FileHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
