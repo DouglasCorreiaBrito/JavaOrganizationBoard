@@ -2,7 +2,9 @@ package br.com.job.view;
 
 import br.com.job.control.ControlLoginScreen;
 import br.com.job.utils.FileHandler;
+import br.com.job.utils.StyleUtils;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,10 +15,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class LoginScreen extends Application {
 
+	public static class Alerts {
+		public Button newUserButton;
+
+		public Alerts() {
+		}
+	}
 
 	private AnchorPane basePane;
 	private AnchorPane formPane;
@@ -27,7 +36,7 @@ public class LoginScreen extends Application {
 	private TextField loginTextField;
 	private PasswordField passwordField;
 	private Button loginButton;
-	private Button newUserButton;
+	private Alerts alert = new Alerts();
 	private static Stage stage;
 
 	ControlLoginScreen cls = new ControlLoginScreen();
@@ -50,7 +59,7 @@ public class LoginScreen extends Application {
 
 	private void iniListeners() {
 
-		newUserButton.setOnAction(e -> callCreateNewUserScreen());
+		alert.newUserButton.setOnAction(e -> callCreateNewUserScreen());
 		loginButton.setOnAction(e -> validateUser());
 	}
 
@@ -60,7 +69,7 @@ public class LoginScreen extends Application {
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erro");
-			alert.setContentText("O usuário ou senha inválida");
+			alert.setContentText("Usuário ou senha inválida");
 			alert.show();
 		}
 	}
@@ -115,9 +124,9 @@ public class LoginScreen extends Application {
 		loginButton.setLayoutX(55);
 		loginButton.setLayoutY(250);
 
-		newUserButton.setLayoutX(55);
-		newUserButton.setLayoutY(450);
-		formPane.getChildren().addAll(loginTextField, passwordField, loginButton, newUserButton, welcomeLabel);
+		alert.newUserButton.setLayoutX(55);
+		alert.newUserButton.setLayoutY(450);
+		formPane.getChildren().addAll(loginTextField, passwordField, loginButton, alert.newUserButton, welcomeLabel);
 		basePane.getChildren().addAll(formPane, logoJobView, jobLabel);
 	}
 
@@ -131,11 +140,14 @@ public class LoginScreen extends Application {
 		formPane.setPrefSize(300, 500);
 		formPane.setStyle("-fx-background-color : #0A2C2E;");
 
-		welcomeLabel = new Label("BEM-VINDO");
-		welcomeLabel.setStyle("-fx-font-size : 36px; -fx-font-color : #FFFFFF ");
+
+		welcomeLabel = new Label("Bem-vindo!");
+		welcomeLabel.setStyle(StyleUtils.WLCM_LABEL);
+		welcomeLabel.setAlignment(Pos.CENTER);
 
 		jobLabel = new Label("JAVA ORGANIZATION BOARD");
-		jobLabel.setStyle("-fx-font-size : 24px; -fx-font-color : #FFFFFF ");
+		jobLabel.setStyle(StyleUtils.JOB_LABEL);
+		jobLabel.setAlignment(Pos.CENTER);
 
 		logoJob = new Image(FileHandler.getImage("logoJOB.png"));
 		logoJobView = new ImageView(logoJob);
@@ -152,11 +164,11 @@ public class LoginScreen extends Application {
 
 		loginButton = new Button("Login");
 		loginButton.setPrefWidth(200);
-		loginButton.setStyle("-fx-background-color : #16ED5E;");
+		loginButton.setStyle(StyleUtils.BTN_LOGIN);
 
-		newUserButton = new Button("Criar Usuário");
-		newUserButton.setPrefWidth(200);
-		newUserButton.setStyle("-fx-background-color : #16ED5E;");
+		alert.newUserButton = new Button("Criar Usuário");
+		alert.newUserButton.setPrefWidth(200);
+		alert.newUserButton.setStyle(StyleUtils.BTN_NEWUSER);
 	}
 
 	public static void main(String[] args) {
