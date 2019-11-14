@@ -29,7 +29,7 @@ public class MenuView extends FlowPane {
         userName.setTextFill(Color.WHITE);
         userName.setAlignment(Pos.CENTER);
 
-        ImageView userImageView = new ImageView(new Image(FileHandler.getImage("profilewhite.png")));
+        ImageView userImageView = loggedUser.getViewerImage();
         userImageView.setFitWidth(250);
         userImageView.setFitHeight(250);
 
@@ -48,7 +48,7 @@ public class MenuView extends FlowPane {
 
         btnSprint.setOnAction(e -> controller.changeScreen(new SprintPane(controller)));
 
-        btnAgenda.setOnAction(e -> controller.changeScreen(new Pane()));
+        btnAgenda.setOnAction(e -> controller.changeScreen(new CalendarPane(controller)));
 
         btnDesempenho.setOnAction(e -> controller.changeScreen(new Pane()));
 
