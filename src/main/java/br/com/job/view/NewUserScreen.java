@@ -66,13 +66,16 @@ public class NewUserScreen extends Application {
 
 	private void createNewUser() {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
-		cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(), userImage,
-				userImageView);
-		try {
-			new LoginScreen().start(new Stage());
-			NewUserScreen.getStage().close();
-		} catch (Exception e) {
-			e.printStackTrace();
+		boolean isCreate = cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(),
+				userImage, userImageView);
+
+		if (isCreate) {
+			try {
+				new LoginScreen().start(new Stage());
+				NewUserScreen.getStage().close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
