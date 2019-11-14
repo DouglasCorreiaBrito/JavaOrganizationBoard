@@ -1,5 +1,8 @@
 package br.com.job.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.job.control.MenuControl;
 import br.com.job.model.Sprint;
 import br.com.job.model.Status;
@@ -7,13 +10,8 @@ import br.com.job.model.Task;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SprintPane extends FlowPane {
 

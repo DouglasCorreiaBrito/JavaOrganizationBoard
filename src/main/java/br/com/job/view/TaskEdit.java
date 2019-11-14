@@ -1,14 +1,18 @@
 package br.com.job.view;
 
+import java.text.SimpleDateFormat;
+
 import br.com.job.control.MenuControl;
 import br.com.job.model.Status;
 import br.com.job.model.Task;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.SelectionModel;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-
-import java.text.SimpleDateFormat;
 
 public class TaskEdit extends GridPane {
 

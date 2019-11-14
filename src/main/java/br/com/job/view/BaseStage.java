@@ -1,19 +1,13 @@
 package br.com.job.view;
 
 import java.awt.Dimension;
-import java.awt.Label;
 import java.awt.Toolkit;
-import java.sql.SQLOutput;
 
-import br.com.job.control.BaseStageControl;
 import br.com.job.model.User;
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class BaseStage extends Application{
@@ -41,7 +35,7 @@ public class BaseStage extends Application{
 
 	private void initComponets() {
 		
-		Dimension d = obterResolucaoTela();
+		Dimension d = getScreenResolution();
 		basePane = new GridPane();
 		basePane.setMinSize( d.getWidth() * 0.75,d.getHeight() * 0.75);
 
@@ -55,7 +49,7 @@ public class BaseStage extends Application{
 
 	}
 
-	private Dimension obterResolucaoTela() {
+	static Dimension getScreenResolution() {
 		
 		Toolkit tk = Toolkit.getDefaultToolkit();
 	    Dimension dimensionScreen = tk.getScreenSize();

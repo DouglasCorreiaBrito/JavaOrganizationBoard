@@ -38,7 +38,7 @@ public class ControlNewUserScreen {
 
 	private void FailureAlet() {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Tela de Informação");
+		alert.setTitle("Tela de InformaÃ§Ã£o");
 		alert.setHeaderText("Erro");
 		alert.setContentText("Verifique os campos informados");
 		alert.showAndWait();
@@ -46,9 +46,9 @@ public class ControlNewUserScreen {
 
 	private void sucessAlert() {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Tela de Informação");
+		alert.setTitle("Tela de InformaÃ§Ã£o");
 		alert.setHeaderText("Sucesso");
-		alert.setContentText("Você acaba de criar um novo usuário");
+		alert.setContentText("VocÃª acaba de criar um novo usuÃ¡rio");
 		alert.showAndWait();
 	}
 
