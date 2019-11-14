@@ -2,14 +2,18 @@ package br.com.job.view;
 
 import br.com.job.control.MenuControl;
 import br.com.job.model.User;
+import br.com.job.utils.FileHandler;
+import br.com.job.utils.StyleUtils;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class MenuView extends FlowPane {
 
@@ -21,14 +25,11 @@ public class MenuView extends FlowPane {
         Button btnLogout = new Button("Logout");
 
         Label userName = new Label(loggedUser.getName());
-        userName.setStyle("-fx-max-height: 50px;" +
-                "-fx-min-height: 50px; " +
-                "-fx-min-width: 250px; " +
-                "-fx-max-width: 250px; ");
+        userName.setStyle(StyleUtils.USER_NAME);
         userName.setTextFill(Color.WHITE);
         userName.setAlignment(Pos.CENTER);
 
-        ImageView userImageView = loggedUser.getViewerImage();
+        ImageView userImageView = new ImageView(new Image(FileHandler.getImage("profilewhite.png")));
         userImageView.setFitWidth(250);
         userImageView.setFitHeight(250);
 
@@ -37,35 +38,37 @@ public class MenuView extends FlowPane {
 
         MenuControl controller = new MenuControl(basePane, dynamicPane, loggedUser);
 
-        String btnStyle = "-fx-background-radius: 0em; " +
-                "-fx-background-color: #588ed6; " +
-                "-fx-max-height: 50px;" +
-                "-fx-min-height: 50px; " +
-                "-fx-min-width: 250px; " +
-                "-fx-max-width: 250px; ";
-
-        btnAnnotation.setStyle(btnStyle);
-        btnSprint.setStyle(btnStyle);
-        btnAgenda.setStyle(btnStyle);
-        btnDesempenho.setStyle(btnStyle);
-        btnLogout.setStyle(btnStyle);
+        btnAnnotation.setStyle(StyleUtils.BTN_MENU);
+        btnSprint.setStyle(StyleUtils.BTN_MENU);
+        btnAgenda.setStyle(StyleUtils.BTN_MENU);
+        btnDesempenho.setStyle(StyleUtils.BTN_MENU);
+        btnLogout.setStyle(StyleUtils.BTN_LOGOUT);
 
         btnAnnotation.setOnAction(e -> controller.changeScreen(new AnnotationPane(controller)));
 
         btnSprint.setOnAction(e -> controller.changeScreen(new SprintPane(controller)));
 
-        btnAgenda.setOnAction(e -> controller.changeScreen(new CalendarPane(controller)));
+        btnAgenda.setOnAction(e -> controller.changeScreen(new Pane()));
 
         btnDesempenho.setOnAction(e -> controller.changeScreen(new Pane()));
 
-        btnLogout.setOnAction(e -> controller.logout());
+        btnLogout.setOnAction(e -> logout());
 
-        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnLogout);
+        getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnDesempenho, btnLogout);
 
         setStyle("-fx-background-color: #000;");
 
         basePane.autosize();
         setMinHeight(basePane.getHeight());
+    }
+
+    private void logout() {
+        try {
+            new LoginScreen().start(new Stage());
+            BaseStage.getStage().close();
+        }   catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -4,7 +4,10 @@ import br.com.job.control.ControlNewUserScreen;
 import br.com.job.utils.FileHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -52,7 +55,7 @@ public class NewUserScreen extends Application {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
 		userImage = cnus.insertImageProfileUser();
 		userImageView = new ImageView(userImage);
-		// TODO enviar essa imagem pro usuário, tentar trocar a imagem no pane
+		//TODO enviar essa imagem pro usuário, tentar trocar a imagem no pane
 	}
 
 	private void clearTextFields() {
@@ -63,19 +66,14 @@ public class NewUserScreen extends Application {
 
 	private void createNewUser() {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
-
-		boolean isCreate = cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(),
-				userImage, userImageView);
-
-		if (isCreate) {
-			try {
-				new LoginScreen().start(new Stage());
-				NewUserScreen.getStage().close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(), userImage,
+				userImageView);
+		try {
+			new LoginScreen().start(new Stage());
+			NewUserScreen.getStage().close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
 	}
 
 	private static Stage getStage() {
@@ -89,25 +87,23 @@ public class NewUserScreen extends Application {
 
 		nameLabel.setLayoutX(100);
 		nameLabel.setLayoutY(200);
-		nameTextField.setLayoutX(140);
+		nameTextField.setLayoutX(150);
 		nameTextField.setLayoutY(195);
-		nameTextField.setText("");
 
 		userLabel.setLayoutX(90);
 		userLabel.setLayoutY(250);
-		userTextField.setLayoutX(140);
+		userTextField.setLayoutX(150);
 		userTextField.setLayoutY(245);
-		userTextField.setText("");
 
-		passwordField.setLayoutX(140);
-		passwordField.setLayoutY(290);
-		passwordField.setText("");
-		passwordLabel.setLayoutX(90);
+		passwordLabel.setLayoutX(100);
 		passwordLabel.setLayoutY(295);
+		passwordField.setLayoutX(150);
+		passwordField.setLayoutY(290);
 
-		saveButton.setLayoutX(280);
+
+		saveButton.setLayoutX(270);
 		saveButton.setLayoutY(350);
-		cleanButton.setLayoutX(330);
+		cleanButton.setLayoutX(340);
 		cleanButton.setLayoutY(350);
 
 		fotoButton.setLayoutX(305);
@@ -138,14 +134,23 @@ public class NewUserScreen extends Application {
 
 		nameTextField = new TextField();
 		nameTextField.setPrefWidth(400);
+		//nameTextField.relocate(1,1);
 		passwordField = new PasswordField();
 		passwordField.setPrefWidth(400);
 		userTextField = new TextField();
 		userTextField.setPrefWidth(400);
 
+		String svBtn = "-fx-background-color : #16ED5E;" + "-fx-font-weight: bold;";
 		saveButton = new Button("Salvar");
+		saveButton.setStyle(svBtn);
+
+		String clBtn = "-fx-background-color : #16ED5E;" + "-fx-font-weight: bold;";
 		cleanButton = new Button("Limpar");
+		cleanButton.setStyle(clBtn);
+
+		String ftBtn = "-fx-background-color : #16ED5E;" + "-fx-font-weight: bold;";
 		fotoButton = new Button("Inserir foto");
+		fotoButton.setStyle(ftBtn);
 
 		userImage = new Image(FileHandler.getImage("profile.png"));
 		userImageView = new ImageView(userImage);
