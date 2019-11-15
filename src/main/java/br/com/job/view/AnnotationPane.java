@@ -15,7 +15,7 @@ public class AnnotationPane extends FlowPane {
 	public AnnotationPane(MenuControl controller) {
 
 		this.controller = controller;
-
+		setStyle("-fx-background-color: #F0E68C;");
 		setVgap(50);
 		setHgap(50);
 

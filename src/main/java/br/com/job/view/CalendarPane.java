@@ -17,7 +17,7 @@ public class CalendarPane extends FlowPane {
 
 	public CalendarPane(MenuControl controller) {
 		this.controller = controller;
-		setStyle("-fx-background-color: #FFFFFF");
+		setStyle("-fx-background-color: #9FF781");
 		CalendarPicker cp = new CalendarPicker();
 		loadCalendar(cp);
 		initListeners(cp);

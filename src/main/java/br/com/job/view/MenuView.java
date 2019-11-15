@@ -56,7 +56,9 @@ public class MenuView extends FlowPane {
 
         getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnDesempenho, btnLogout);
 
-        setStyle("-fx-background-color: #000;");
+        setStyle("-fx-background-color: #000000;"
+        		+ "-fx-border-color: white;"
+        		+ "-fx-border-width: 2;");
 
         basePane.autosize();
         setMinHeight(basePane.getHeight());

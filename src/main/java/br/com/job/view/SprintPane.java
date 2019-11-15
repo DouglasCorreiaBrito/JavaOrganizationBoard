@@ -19,6 +19,7 @@ public class SprintPane extends FlowPane {
 
     public SprintPane(MenuControl controller) {
         this.controller = controller;
+        setStyle("-fx-background-color: #B0E0E6;");
 
         setOrientation(Orientation.VERTICAL);
         setVgap(20);

@@ -38,7 +38,7 @@ public class MenuControl {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setFitToHeight(true);
-        secondScreen.setStyle(secondScreen.getStyle() + "-fx-background-color: #444444;");
+//        secondScreen.setStyle(secondScreen.getStyle() + "-fx-background-color: #444444;");
 
         backgroundPane.add(scrollPane, 1, 0);
         this.secondScreen = scrollPane;

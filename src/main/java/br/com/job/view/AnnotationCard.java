@@ -14,7 +14,7 @@ public class AnnotationCard extends Pane {
 
     public AnnotationCard(Annotation annotation) {
 
-        setStyle("-fx-background-color: #588ed6");
+        setStyle("-fx-background-color: #FFD700");
         setMinWidth(width);
         setMinHeight(height);
         setMaxWidth(width);
