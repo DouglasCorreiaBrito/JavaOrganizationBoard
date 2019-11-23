@@ -4,9 +4,11 @@ import java.util.Date;
 
 import br.com.job.control.MenuControl;
 import br.com.job.model.Annotation;
+import br.com.job.utils.StyleUtils;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.TextAlignment;
 
 public class AnnotationPane extends FlowPane {
 
@@ -35,13 +37,15 @@ public class AnnotationPane extends FlowPane {
 		newCardContainter.setMinWidth(250);
 		newCardContainter.setMaxWidth(250);
 
-		Button newCard = new Button("+");
-		newCard.setStyle("-fx-background-radius: 0em; " + "-fx-background-color: #588ed6; " + "-fx-max-height: 100px;"
-				+ "-fx-min-height: 100px; " + "-fx-min-width: 100px; " + "-fx-max-width: 100px; ");
+		Button newCard = new Button("+ Nova Anotação");
+		newCard.setStyle(StyleUtils.BTN_NEW);
+//		newCard.setAlignment(Pos.CENTER);
+		newCard.setTextAlignment(TextAlignment.CENTER);
 		newCard.setOnAction(e -> controller.changeScreen(new AnnotationEdit(controller)));
 
-		newCardContainter.setAlignment(Pos.CENTER);
+		newCardContainter.setAlignment(Pos.BOTTOM_CENTER);
 		newCardContainter.getChildren().add(newCard);
+		newCardContainter.setStyle(StyleUtils.BTN_BOTTOM);
 
 		getChildren().add(newCardContainter);
 
