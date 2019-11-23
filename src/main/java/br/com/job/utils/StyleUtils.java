@@ -43,4 +43,29 @@ public class StyleUtils {
     final public static String BTN_NEWUSER = "-fx-background-color : #16ED5E;" +
             "-fx-font-weight: bold;";
 
+
+// NEW USER SCREEN
+
+// ANNOTATION
+
+    final public static String BTN_NEW = "-fx-background-radius:0em; " +
+            "-fx-background-color: #D3D3D3; " +
+            "-fx-max-height: 50px;"
+            + "-fx-min-height: 50px; " +
+            "-fx-min-width: 1150px; " +
+            "-fx-max-width: 1150px;";
+
+    final public static String BTN_BOTTOM = "-fx-alignment: bottom-right;" +
+            "-fx-font-weight: bold;" +
+            "-fx-text-fill: #FFFFFF;" +
+            "-fx-background-radius:0em; " +
+            "-fx-background-color: #D3D3D3; " + "-fx-max-height: 50px;"
+            + "-fx-min-height: 50px; " +
+            "-fx-min-width: 1150px; " +
+            "-fx-max-width: 1150px;";
+
+//    final public static String BTN_NEW = "-fx-position:absolute;" + "-fx-bottom:0;" + "-fx-width:100%;" + "-fx-height:60px;" +  "-fx-background:#6cf;";
 }
+
+
+
