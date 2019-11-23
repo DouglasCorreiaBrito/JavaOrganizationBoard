@@ -5,14 +5,10 @@ import java.text.SimpleDateFormat;
 import br.com.job.control.MenuControl;
 import br.com.job.model.Status;
 import br.com.job.model.Task;
+import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SelectionModel;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 
 public class TaskEdit extends GridPane {
 
@@ -39,17 +35,26 @@ public class TaskEdit extends GridPane {
         Label lblDesc = new Label("Descrição");
         TextField txtDesc = new TextField();
 
-        SelectionModel<Status> selectionModel = new SingleSelectionModel<Status>() {
-            @Override
-            protected Status getModelItem(int index) {
-                return Status.values()[index];
-            }
+        Label lblStatus = new Label("Status");
+        ChoiceBox<Status> selectStatus = new ChoiceBox<>(FXCollections.observableArrayList(
+                Status.values())
+        );
 
-            @Override
-            protected int getItemCount() {
-                return Status.values().length;
-            }
-        };
+        Label lblHoursToSpend = new Label("Horas previstas");
+        TextField txtHoursToSpend = new TextField("");
+
+        Label lblHoursSpent = new Label("Horas gastas");
+        TextField txtHoursSpent = new TextField("");
+
+        Label lblAssignee = new Label("Responsável");
+        TextField txtAssignee = new TextField("");
+
+        Label lblIniDate = new Label("Data Inicial");
+        TextField txtIniDate = new TextField("");
+
+        Label lblEndDate = new Label("Data Final");
+        TextField txtEndDate = new TextField("");
+
 
         String labelStyle = "-fx-max-height: 50px;" +
                 "-fx-min-height: 50px; " +
@@ -74,8 +79,8 @@ public class TaskEdit extends GridPane {
         lblTitle.setAlignment(Pos.CENTER);
         lblDesc.setAlignment(Pos.CENTER);
 
-        lblTitle.setTextFill(Color.WHITE);
-        lblDesc.setTextFill(Color.WHITE);
+        //lblTitle.setTextFill(Color.WHITE);
+        //lblDesc.setTextFill(Color.WHITE);
 
         txtTitle.setStyle(textFieldStyle);
         txtDesc.setStyle(textFieldStyle);
@@ -104,13 +109,37 @@ public class TaskEdit extends GridPane {
         add(lblDesc, 0, 1);
         add(txtDesc, 1, 1);
 
-        add(btnBack, 0, 4, 1, 4);
-        add(btnSave, 1, 4, 1, 4);
+        add(selectStatus, 0, 4);
+
+        add(btnBack, 0, 5, 1, 4);
+        add(btnSave, 1, 5, 1, 4);
+
 
         if (task != null) {
             // carregar os dados
+
+            SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
+
             txtTitle.setText(task.getTitle());
             txtDesc.setText(task.getDescription());
+            txtHoursToSpend.setText(hourFormat.format(task.getHoursToSpend()));
+            txtHoursSpent.setText(hourFormat.format(task.getHoursToSpend()));
+
+            //Label lblHoursToSpend = new Label("Horas previstas");
+            //TextField txtHoursToSpend = new TextField("");
+
+            //Label lblHoursSpent = new Label("Horas gastas");
+            //TextField txtHoursSpent = new TextField("");
+
+            //Label lblAssignee = new Label("Responsável");
+            //TextField txtAssignee = new TextField("");
+
+            //Label lblIniDate = new Label("Data Inicial");
+            //TextField txtIniDate = new TextField("");
+
+            //Label lblEndDate = new Label("Data Final");
+            //TextField txtEndDate = new TextField("");
+
         }
 
     }
