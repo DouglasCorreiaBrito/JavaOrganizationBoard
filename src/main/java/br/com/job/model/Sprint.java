@@ -1,9 +1,10 @@
 package br.com.job.model;
 
+import br.com.job.dao.SprintDAO;
+
 import java.util.List;
 
 public class Sprint {
-
 	public String getTag() {
 		return tag;
 	}

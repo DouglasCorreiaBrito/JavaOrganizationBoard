@@ -1,8 +1,5 @@
 package br.com.job.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.job.control.MenuControl;
 import br.com.job.model.Sprint;
 import br.com.job.model.Status;
@@ -12,6 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SprintPane extends FlowPane {
 
@@ -25,10 +25,13 @@ public class SprintPane extends FlowPane {
         setVgap(20);
 
         Sprint sprint = new Sprint();
+        // We will get sprint data here, with the database connection.
+        // by now, we have only mocked data:
 
         // **** MODEL **** //
 
         List<Task> tasks = new ArrayList<>();
+
         sprint.setNumber(1);
         sprint.setDescription("Faculdade");
         sprint.setTag("FZL");
@@ -48,7 +51,7 @@ public class SprintPane extends FlowPane {
 
         // **** END MODEL **** //
 
-        sprint.getTasks().forEach(task -> {
+        for (Task task : sprint.getTasks()) {
             Label taskLabel = new Label(task.getTitle() + " " + task.getDescription());
 
             taskLabel.setTextFill(Color.BLACK);
@@ -60,8 +63,12 @@ public class SprintPane extends FlowPane {
                     "-fx-min-height: 40px; " +
                     "-fx-max-height: 40px; ");
 
+            taskLabel.setOnMouseClicked(event -> {
+                controller.changeScreen(new TaskEdit(controller, task));
+            });
+
             getChildren().add(taskLabel);
-        });
+        }
 
         Button btnNewTask = new Button("+");
         btnNewTask.setStyle("-fx-background-radius: 0em; " +
