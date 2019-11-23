@@ -1,25 +1,44 @@
 package br.com.job.model;
 
+import br.com.job.utils.FileHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class User {
 
+    private int id;
 	private String name;
-	private String user;
+	private String username;
 	private String password;
 	private Image profileImage;
-	private ImageView viewerImage;
 
-	public User(String name, String user, String password, Image profileImage, ImageView viewerImage) {
-		this.name = name;
-		this.user = user;
-		this.password = password;
-		this.profileImage = profileImage;
-		this.viewerImage = viewerImage;
+	public User() {
+
 	}
 
-	public String getName() {
+	public User(String name, String user, String password, Image profileImage) {
+		this.name = name;
+		this.username = user;
+		this.password = password;
+		this.profileImage = profileImage;
+	}
+
+    public User(String name, String user, String password, String viewerImage) {
+        this.name = name;
+        this.username = user;
+        this.password = password;
+        this.profileImage = new Image(FileHandler.getImage(viewerImage));
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
 		return name;
 	}
 
@@ -27,12 +46,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -51,11 +70,7 @@ public class User {
 		this.profileImage = profileImage;
 	}
 
-	public ImageView getViewerImage() {
-		return viewerImage;
-	}
-
-	public void setViewerImage(ImageView viewerImage) {
-		this.viewerImage = viewerImage;
-	}
+	public void setProfileImage(String viewerImage) {
+        this.profileImage = new Image(FileHandler.getImage(viewerImage));
+    }
 }
