@@ -20,13 +20,6 @@ import javafx.stage.Stage;
 
 public class LoginScreen extends Application {
 
-	public static class Alerts {
-		public Button newUserButton;
-
-		public Alerts() {
-		}
-	}
-
 	private AnchorPane basePane;
 	private AnchorPane formPane;
 	private Label welcomeLabel;
@@ -66,7 +59,7 @@ public class LoginScreen extends Application {
 	private void validateUser() {
 		if (cls.userAuthentication(loginTextField.getText(), passwordField.getText())) {
 			callBaseStage();
-		}else {
+		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erro");
 			alert.setContentText("Usuário ou senha inválida");
@@ -139,7 +132,6 @@ public class LoginScreen extends Application {
 		formPane = new AnchorPane();
 		formPane.setPrefSize(300, 500);
 		formPane.setStyle("-fx-background-color : #0A2C2E;");
-
 
 		welcomeLabel = new Label("Bem-vindo!");
 		welcomeLabel.setStyle(StyleUtils.WLCM_LABEL);
