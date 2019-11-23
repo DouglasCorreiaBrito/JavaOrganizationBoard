@@ -99,13 +99,13 @@ public class LoginScreen extends Application {
 		formPane.setLayoutX(450);
 		formPane.setLayoutY(50);
 
-		logoJobView.setLayoutX(80);
+		logoJobView.setLayoutX(100);
 		logoJobView.setLayoutY(100);
 
-		jobLabel.setLayoutX(80);
+		jobLabel.setLayoutX(60);
 		jobLabel.setLayoutY(400);
 
-		welcomeLabel.setLayoutX(55);
+		welcomeLabel.setLayoutX(66);
 		welcomeLabel.setLayoutY(50);
 
 		loginTextField.setLayoutX(55);

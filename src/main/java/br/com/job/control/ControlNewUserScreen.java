@@ -12,13 +12,12 @@ import javafx.stage.FileChooser;
 
 public class ControlNewUserScreen {
 
-	public Boolean create(String name, String username, String password, Image userImage, ImageView userImageView) {
+	public Boolean create(String name, String username, String password, Image userImage) {
 
 		if (validadeNullFields(name, username, password)) {
-
-			User user = new User(name, username, password, userImage, userImageView);
+			User user = new User(name, username, password, userImage);
 			UserDAO dao = new UserDAO();
-			dao.saveUser(user);
+			dao.insertUser(user);
 			sucessAlert();
 			return true;
 		} else {

@@ -67,7 +67,7 @@ public class NewUserScreen extends Application {
 	private void createNewUser() {
 		ControlNewUserScreen cnus = new ControlNewUserScreen();
 		boolean isCreate = cnus.create(nameTextField.getText(), userTextField.getText(), passwordField.getText(),
-				userImage, userImageView);
+				userImage);
 
 		if (isCreate) {
 			try {

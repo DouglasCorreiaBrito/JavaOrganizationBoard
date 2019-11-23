@@ -29,7 +29,7 @@ public class MenuView extends FlowPane {
         userName.setTextFill(Color.WHITE);
         userName.setAlignment(Pos.CENTER);
 
-        ImageView userImageView = loggedUser.getViewerImage();
+        ImageView userImageView = new ImageView(loggedUser.getProfileImage());
         userImageView.setFitWidth(250);
         userImageView.setFitHeight(250);
 

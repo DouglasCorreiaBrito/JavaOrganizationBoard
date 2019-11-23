@@ -12,11 +12,11 @@ public class ControlLoginScreen {
 	public boolean userAuthentication(String user, String password) {
 
 		UserDAO dao = new UserDAO();
-		List<User> users = dao.users;
+		List<User> users = dao.getUsers();
 
-		for (User usuario : users) {
-			if (usuario.getUser().equals(user) && usuario.getPassword().equals(password)) {
-				this.loggedUser = usuario;
+		for (User u : users) {
+			if (u.getUsername().equals(user) && u.getPassword().equals(password)) {
+				this.loggedUser = u;
 				return true;
 			}
 		}
