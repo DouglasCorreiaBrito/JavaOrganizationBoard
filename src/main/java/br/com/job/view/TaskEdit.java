@@ -1,8 +1,11 @@
 package br.com.job.view;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import br.com.job.control.MenuControl;
+import br.com.job.dao.UserDAO;
 import br.com.job.model.Status;
 import br.com.job.model.Task;
 import br.com.job.utils.StyleUtils;
@@ -16,7 +19,8 @@ public class TaskEdit extends GridPane {
     MenuControl controller;
     Task task;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public TaskEdit(MenuControl controller) {
         this.controller = controller;
@@ -56,7 +60,6 @@ public class TaskEdit extends GridPane {
         Label lblEndDate = new Label("Data Final");
         TextField txtEndDate = new TextField("");
 
-
         lblTitle.setStyle(StyleUtils.LBL_TASK);
         lblDesc.setStyle(StyleUtils.LBL_TASK);
         lblStatus.setStyle(StyleUtils.LBL_TASK);
@@ -80,9 +83,28 @@ public class TaskEdit extends GridPane {
         });
 
         btnSave.setOnAction(e -> {
+            boolean salvar = true;
+            if(task == null) {
+                salvar = false;
+                task = new Task();
+            }
+
             task.setTitle(txtTitle.getText());
-            task.setDescription(txtTitle.getText());
-            task.save();
+            task.setDescription(txtDesc.getText());
+            task.setStatus(selectStatus.getValue());
+            task.setHoursToSpend(Integer.parseInt(txtHoursToSpend.getText().replaceAll(":", "")));
+            task.setHoursSpent(Integer.parseInt(txtHoursSpent.getText().replaceAll(":", "")));
+            //task.setAssignee(new UserDAO().getUser("1"));
+            try {
+                task.setIniDate(dateFormat.parse(txtIniDate.getText()));
+                task.setEndDate(dateFormat.parse(txtEndDate.getText()));
+            } catch (ParseException ex) {
+                task.setIniDate(new Date());
+                task.setEndDate(new Date());
+                ex.printStackTrace();
+            }
+            task.save(salvar);
+            controller.changeScreen(new SprintPane(controller));
         });
 
         btnBack.setStyle(StyleUtils.BTN_TASK);
@@ -97,35 +119,23 @@ public class TaskEdit extends GridPane {
         add(lblStatus, 0, 2);
         add(selectStatus, 1, 2);
 
-        add(btnBack, 1, 6, 1, 4);
-        add(btnSave, 2, 6, 1, 4);
+        add(lblEndDate, 0, 6);
+        add(txtEndDate, 1, 6);
 
+        add(btnBack, 0, 7, 1, 4);
+        add(btnSave, 1, 7, 1, 4);
 
         if (task != null) {
             // carregar os dados
 
-            SimpleDateFormat hourFormat = new SimpleDateFormat("HH:mm");
-
             txtTitle.setText(task.getTitle());
             txtDesc.setText(task.getDescription());
+            selectStatus.setValue(task.getStatus());
             txtHoursToSpend.setText(hourFormat.format(task.getHoursToSpend()));
             txtHoursSpent.setText(hourFormat.format(task.getHoursToSpend()));
-
-            //Label lblHoursToSpend = new Label("Horas previstas");
-            //TextField txtHoursToSpend = new TextField("");
-
-            //Label lblHoursSpent = new Label("Horas gastas");
-            //TextField txtHoursSpent = new TextField("");
-
-            //Label lblAssignee = new Label("Responsável");
-            //TextField txtAssignee = new TextField("");
-
-            //Label lblIniDate = new Label("Data Inicial");
-            //TextField txtIniDate = new TextField("");
-
-            //Label lblEndDate = new Label("Data Final");
-            //TextField txtEndDate = new TextField("");
-
+            txtAssignee.setText(task.getAssignee().getId() + " - " + task.getAssignee().getName());
+            txtIniDate.setText(task.getIniDate() == null ? "" : dateFormat.format(task.getIniDate()));
+            txtEndDate.setText(task.getEndDate() == null ? "" : dateFormat.format(task.getEndDate()));
         }
 
     }

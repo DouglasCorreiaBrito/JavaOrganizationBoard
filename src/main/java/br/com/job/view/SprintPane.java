@@ -1,6 +1,7 @@
 package br.com.job.view;
 
 import br.com.job.control.MenuControl;
+import br.com.job.dao.TaskDAO;
 import br.com.job.model.Sprint;
 import br.com.job.model.Status;
 import br.com.job.model.Task;
@@ -27,34 +28,13 @@ public class SprintPane extends FlowPane {
         setVgap(20);
 
         Sprint sprint = new Sprint();
-        // We will get sprint data here, with the database connection.
-        // by now, we have only mocked data:
-
-        // **** MODEL **** //
-
-        List<Task> tasks = new ArrayList<>();
-
         sprint.setNumber(1);
         sprint.setDescription("Faculdade");
         sprint.setTag("FZL");
-
-        for (int i = 0; i < 5; i++) {
-            Task task = new Task();
-
-            task.setId(i);
-            task.setDescription("Descrição da tarefa " + i);
-            task.setStatus(Status.ToDo);
-            task.setTitle(sprint.getTag() + "-" + task.getId());
-
-            tasks.add(task);
-        }
-
-        sprint.setTasks(tasks);
-
-        // **** END MODEL **** //
+        sprint.setTasks(new TaskDAO().getTasks());
 
         for (Task task : sprint.getTasks()) {
-            Label taskLabel = new Label(task.getTitle() + " " + task.getDescription());
+            Label taskLabel = new Label("[" + task.getStatus().name() + "] " + task.getTitle() + " - " + task.getDescription());
 
             taskLabel.setTextFill(Color.BLACK);
 

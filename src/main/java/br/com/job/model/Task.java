@@ -1,5 +1,7 @@
 package br.com.job.model;
 
+import br.com.job.dao.TaskDAO;
+
 import java.util.Date;
 
 public class Task implements Persistent {
@@ -7,13 +9,14 @@ public class Task implements Persistent {
 	private int id;
 
 	private String title;
-
 	private String description;
 	private Status status;
 	private int hoursToSpend;
 	private int hoursSpent;
 	private User assignee;
-	private Date previewDate;
+	private Date iniDate;
+	private Date endDate;
+
 	public void changeStatus(Status s) {
 
 	}
@@ -37,7 +40,7 @@ public class Task implements Persistent {
 	}
 
 	public String getTitle() {
-		return title;
+		return title == null ? "" : title;
 	}
 
 	public void setTitle(String title) {
@@ -45,7 +48,7 @@ public class Task implements Persistent {
 	}
 
 	public String getDescription() {
-		return description;
+		return description == null ? "" : description;
 	}
 
 	public void setDescription(String description) {
@@ -53,7 +56,7 @@ public class Task implements Persistent {
 	}
 
 	public Status getStatus() {
-		return status;
+		return status == null ? Status.ToDo : status;
 	}
 
 	public void setStatus(Status status) {
@@ -84,11 +87,23 @@ public class Task implements Persistent {
 		this.assignee = assignee;
 	}
 
-	public Date getPreviewDate() {
-		return previewDate;
+	public Date getIniDate() {
+		return iniDate;
 	}
 
-	public void setPreviewDate(Date previewDate) {
-		this.previewDate = previewDate;
+	public void setIniDate(Date iniDate) {
+		this.iniDate = iniDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public void save(boolean salvar) {
+		new TaskDAO().saveTask(this, salvar);
 	}
 }

@@ -4,6 +4,7 @@ import java.io.File;
 
 import br.com.job.dao.UserDAO;
 import br.com.job.model.User;
+import br.com.job.utils.FileHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -13,18 +14,19 @@ import javafx.stage.FileChooser;
 public class ControlNewUserScreen {
 
 	public Boolean create(String name, String username, String password, Image userImage) {
-
 		if (validadeNullFields(name, username, password)) {
 			User user = new User(name, username, password, userImage);
 			UserDAO dao = new UserDAO();
-			dao.insertUser(user);
+			int insertedId = dao.insertUser(user);
+
+			FileHandler.saveImage(userImage, String.valueOf(insertedId) + ".png");
+
 			sucessAlert();
 			return true;
 		} else {
 			FailureAlet();
 			return false;
 		}
-
 	}
 
 	private boolean validadeNullFields(String name, String username, String password) {
@@ -32,7 +34,6 @@ public class ControlNewUserScreen {
 			return false;
 		}
 		return true;
-		
 	}
 
 	private void FailureAlet() {
