@@ -16,18 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 public class TaskDAO {
 
-//    CREATE TABLE IF NOT EXISTS tb_task (
-//            id int primary key,
-//            description varchar(5000),
-//    status int not null default 0,
-//    hoursToSpend int,
-//    hoursSpent int,
-//    assignee int,
-//    iniDate date,
-//    endDate date,
-//    sprint int
-//);
-
     public List<Task> getTasks() {
         List<Task> tasks = new ArrayList<>();
 

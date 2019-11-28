@@ -21,17 +21,6 @@ public class AnnotationPane extends FlowPane {
 		setVgap(50);
 		setHgap(50);
 
-		for (int i = 0; i < 10; i++) {
-			Annotation annotation = new Annotation();
-
-			annotation.setTitle("Título " + i);
-			annotation
-					.setDescription("Little description about the annotation. I will write something here just to test"
-							+ " this functionality. This is just a test, we will have more things to write with the proper classes");
-			annotation.setExpireDate(new Date());
-
-			getChildren().add(new AnnotationCard(annotation));
-		}
 
 		FlowPane newCardContainter = new FlowPane();
 		newCardContainter.setMinWidth(250);
