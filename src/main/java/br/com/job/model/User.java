@@ -71,6 +71,6 @@ public class User {
 	}
 
 	public void setProfileImage(String viewerImage) {
-        this.profileImage = new Image(FileHandler.getImage(viewerImage));
+        this.profileImage = new Image(FileHandler.getImage(String.valueOf(this.id + ".png")));
     }
 }

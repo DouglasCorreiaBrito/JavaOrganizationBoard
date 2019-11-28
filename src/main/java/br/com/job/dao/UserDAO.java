@@ -17,12 +17,37 @@ public class UserDAO {
         users.add(usuario);
     }
 
+    public User getUser(String userId) {
+        DBConnection con = new DBConnection();
+        User user = new User();
+        try {
+            String query = "SELECT id, username, userlogin, userpassword, imageview FROM tb_user where id = ?;";
+
+            PreparedStatement ps = con.getCon().prepareStatement(query);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                user.setId(rs.getInt(1));
+                user.setName(StringUtils.defaultString(rs.getString(2)));
+                user.setUsername(StringUtils.defaultString(rs.getString(3)));
+                user.setPassword(StringUtils.defaultString(rs.getString(4)));
+                user.setProfileImage(StringUtils.defaultString(rs.getString(5)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        con.closeCon();
+        return user;
+    }
+
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
 
         DBConnection con = new DBConnection();
         try {
-            String query = "SELECT id, username, userlogin, userpassword, imageview FROM tb_user;";
+            String query = "SELECT id, username, userlogin, userpassword, id FROM tb_user;";
 
             PreparedStatement ps = con.getCon().prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -34,8 +59,11 @@ public class UserDAO {
                 u.setName(StringUtils.defaultString(rs.getString(2)));
                 u.setUsername(StringUtils.defaultString(rs.getString(3)));
                 u.setPassword(StringUtils.defaultString(rs.getString(4)));
-                u.setProfileImage(StringUtils.defaultString(rs.getString(5)));
-
+                try {
+                    u.setProfileImage(StringUtils.defaultString(rs.getString(5)) + ".png");
+                } catch (Exception e) {
+                    u.setProfileImage("profilewhite.png");
+                }
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -46,22 +74,31 @@ public class UserDAO {
         return users;
     }
 
-    public void insertUser(User u){
+    public int insertUser(User u){
         DBConnection con = new DBConnection();
+        int insertedId = 0;
         try {
-            String query = "INSERT INTO tb_user (username, userlogin, userpassword, imageview) VALUES(?, ?, ?, ?)";
+            String query = "INSERT INTO tb_user (username, userlogin, userpassword) VALUES(?, ?, ?)";
             PreparedStatement ps = con.getCon().prepareStatement(query);
 
             ps.setString(1, u.getName());
             ps.setString(2, u.getUsername());
             ps.setString(3, u.getPassword());
-            ps.setString(4, "pp.jfif");
 
             ps.executeUpdate();
+
+            query = "SELECT LAST_INSERT_ID()";
+            ps = con.getCon().prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                insertedId = rs.getInt(1);
+            }
+
         } catch(SQLException e){
             e.printStackTrace();
         }
-
+        con.closeCon();
+        return insertedId;
     }
 
 }
