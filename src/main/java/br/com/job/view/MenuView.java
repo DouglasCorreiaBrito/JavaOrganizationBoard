@@ -42,7 +42,7 @@ public class MenuView extends FlowPane {
         btnSprint.setStyle(StyleUtils.BTN_MENU);
         btnAgenda.setStyle(StyleUtils.BTN_MENU);
         btnDesempenho.setStyle(StyleUtils.BTN_MENU);
-        btnLogout.setStyle(StyleUtils.BTN_LOGOUT);
+        btnLogout.setStyle(StyleUtils.BTN_MENU);
 
         btnAnnotation.setOnAction(e -> controller.changeScreen(new AnnotationPane(controller)));
 
@@ -56,9 +56,7 @@ public class MenuView extends FlowPane {
 
         getChildren().addAll(userImageView, userName, btnAnnotation, btnSprint, btnAgenda, btnDesempenho, btnLogout);
 
-        setStyle("-fx-background-color: #222222;"
-        		+ "-fx-border-color: white;"
-        		+ "-fx-border-width: 2;");
+        setStyle(StyleUtils.MENU_LAT);
 
         basePane.autosize();
         setMinHeight(basePane.getHeight());

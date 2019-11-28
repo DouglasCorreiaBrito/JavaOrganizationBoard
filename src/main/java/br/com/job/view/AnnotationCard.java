@@ -1,6 +1,7 @@
 package br.com.job.view;
 
 import br.com.job.model.Annotation;
+import br.com.job.utils.StyleUtils;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -14,7 +15,7 @@ public class AnnotationCard extends Pane {
 
     public AnnotationCard(Annotation annotation) {
 
-        setStyle("-fx-background-color: #FFD700");
+        setStyle(StyleUtils.ANTN_CARD);
         setMinWidth(width);
         setMinHeight(height);
         setMaxWidth(width);

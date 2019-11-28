@@ -17,7 +17,7 @@ public class AnnotationPane extends FlowPane {
 	public AnnotationPane(MenuControl controller) {
 
 		this.controller = controller;
-		setStyle("-fx-background-color: #F0E68C;");
+		setStyle(StyleUtils.ANTN_PANE);
 		setVgap(50);
 		setHgap(50);
 
@@ -37,7 +37,7 @@ public class AnnotationPane extends FlowPane {
 		newCardContainter.setMinWidth(250);
 		newCardContainter.setMaxWidth(250);
 
-		Button newCard = new Button("+ Nova Anotação");
+		Button newCard = new Button("✚ Nova Anotação");
 		newCard.setStyle(StyleUtils.BTN_NEW);
 //		newCard.setAlignment(Pos.CENTER);
 		newCard.setTextAlignment(TextAlignment.CENTER);
