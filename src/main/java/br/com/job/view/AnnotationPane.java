@@ -1,8 +1,11 @@
 package br.com.job.view;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.job.control.MenuControl;
+import br.com.job.dao.AnnotationDAO;
 import br.com.job.model.Annotation;
 import br.com.job.utils.StyleUtils;
 import javafx.geometry.Pos;
@@ -21,6 +24,14 @@ public class AnnotationPane extends FlowPane {
 		setVgap(50);
 		setHgap(50);
 
+		List<Annotation> annotations = new AnnotationDAO().getAnnotations();
+		annotations.forEach(a -> {
+			AnnotationCard card = new AnnotationCard(a);
+			card.setOnMouseClicked(e -> {
+				controller.changeScreen(new AnnotationEdit(controller, a));
+			});
+			this.getChildren().add(card);
+		});
 
 		FlowPane newCardContainter = new FlowPane();
 		newCardContainter.setMinWidth(250);

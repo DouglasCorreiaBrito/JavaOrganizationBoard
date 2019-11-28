@@ -16,7 +16,8 @@ public class CalendarPane extends FlowPane {
 
 	MenuControl controller;
 	private CalendarPicker cp = new CalendarPicker();
-	private Button btnschedule = new Button("Agendar");
+	private Button btnschedule = new Button("Agendar novo compromisso");
+	private Button btnListschedule = new Button("Consultar compromissos");
 	private Date dateToSchedule;
 
 	public CalendarPane(MenuControl controller) {
@@ -24,7 +25,7 @@ public class CalendarPane extends FlowPane {
 		setStyle("-fx-background-color: #00FF7F");
 		loadCalendar(cp);
 		initListeners(cp, btnschedule);
-		getChildren().addAll(cp, btnschedule);
+		getChildren().addAll(cp, btnschedule,btnListschedule);
 	}
 
 	private void initListeners(CalendarPicker cp, Button btnschedule) {
@@ -36,16 +37,10 @@ public class CalendarPane extends FlowPane {
 			}
 		});
 
-		btnschedule.setOnAction(e -> callScheduleBuilder(dateToSchedule));
-	}
-
-	private void callScheduleBuilder(Date dateToSchedule) {
-		try {
-			new ScheduleBuilder(dateToSchedule).start(new Stage());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		btnschedule.setOnAction(e -> callScheduleBuilder(dateToSchedule));
+		btnschedule.setOnAction(e-> controller.changeScreen(new ScheduleBuilder(dateToSchedule,controller)));
+		
+		btnListschedule.setOnAction(e-> controller.changeScreen(new Scheduledcalendars(controller)));
 	}
 
 	private void loadCalendar(CalendarPicker cp) {
