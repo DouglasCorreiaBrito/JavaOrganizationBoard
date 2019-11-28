@@ -8,6 +8,7 @@ import br.com.job.control.MenuControl;
 import br.com.job.dao.UserDAO;
 import br.com.job.model.Status;
 import br.com.job.model.Task;
+import br.com.job.utils.StyleUtils;
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -59,27 +60,23 @@ public class TaskEdit extends GridPane {
         Label lblEndDate = new Label("Data Final");
         TextField txtEndDate = new TextField("");
 
-        String labelStyle = "-fx-max-height: 50px;" +
-                "-fx-min-height: 50px; " +
-                "-fx-min-width: 250px; " +
-                "-fx-max-width: 250px; ";
+        lblTitle.setStyle(StyleUtils.LBL_TASK);
+        lblDesc.setStyle(StyleUtils.LBL_TASK);
+        lblStatus.setStyle(StyleUtils.LBL_TASK);
 
-        String textFieldStyle = "-fx-max-height: 50px;" +
-                "-fx-min-height: 50px; " +
-                "-fx-min-width: 250px; " +
-                "-fx-max-width: 250px; ";
+        lblTitle.setAlignment(Pos.CENTER);
+        lblDesc.setAlignment(Pos.CENTER);
 
-        String buttonStyle = "-fx-background-radius: 0em; " +
-                "-fx-background-color: #588ed6; " +
-                "-fx-max-height: 50px;" +
-                "-fx-min-height: 50px; " +
-                "-fx-min-width: 250px; " +
-                "-fx-max-width: 250px; ";
+        //lblTitle.setTextFill(Color.WHITE);
+        //lblDesc.setTextFill(Color.WHITE);
+
+        txtTitle.setStyle(StyleUtils.TXT_TASK);
+        txtDesc.setStyle(StyleUtils.TXT_TASK);
 
         //TODO aplicar calendário para seleção de data no dueDate;
 
-        Button btnBack = new Button("Voltar");
-        Button btnSave = new Button("Salvar");
+        Button btnBack = new Button("❮ Voltar");
+        Button btnSave = new Button("Salvar ✔");
 
         btnBack.setOnAction(e -> {
             controller.changeScreen(new SprintPane(controller));
@@ -110,8 +107,8 @@ public class TaskEdit extends GridPane {
             controller.changeScreen(new SprintPane(controller));
         });
 
-        btnBack.setStyle(buttonStyle);
-        btnSave.setStyle(buttonStyle);
+        btnBack.setStyle(StyleUtils.BTN_TASK);
+        btnSave.setStyle(StyleUtils.BTN_TASK);
 
         add(lblTitle, 0, 0);
         add(txtTitle, 1, 0);
@@ -121,15 +118,6 @@ public class TaskEdit extends GridPane {
 
         add(lblStatus, 0, 2);
         add(selectStatus, 1, 2);
-
-        add(lblHoursToSpend, 0, 3);
-        add(txtHoursToSpend, 1, 3);
-
-        add(lblHoursSpent, 0, 4);
-        add(txtHoursSpent, 1, 4);
-
-        add(lblIniDate, 0, 5);
-        add(txtIniDate, 1, 5);
 
         add(lblEndDate, 0, 6);
         add(txtEndDate, 1, 6);

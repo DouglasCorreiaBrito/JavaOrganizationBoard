@@ -3,6 +3,13 @@ package br.com.job.utils;
 public class StyleUtils {
 
 //   MENU VIEW
+
+    final public static String BASE_BLANK = "-fx-background-color: #222222;";
+
+    final public static String MENU_LAT = "-fx-background-color: #222222;"
+            + "-fx-border-color: white;"
+            + "-fx-border-width: 2;";
+
     final public static String BTN_MENU = //"-fx-background-color: linear-gradient(#588ed6, #C0C0C0);" +
             "-fx-font-weight: bold;" +
             "-fx-background-radius: 0em; " +
@@ -46,26 +53,117 @@ public class StyleUtils {
 
 // NEW USER SCREEN
 
-// ANNOTATION
+// ANNOTATION PANE
+
+    final public static String ANTN_PANE = "-fx-background-color: #F0E68C;";
 
     final public static String BTN_NEW = "-fx-background-radius:0em; " +
             "-fx-background-color: #D3D3D3; " +
-            "-fx-max-height: 50px;"
-            + "-fx-min-height: 50px; " +
+            "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px; " +
             "-fx-min-width: 1150px; " +
             "-fx-max-width: 1150px;";
 
     final public static String BTN_BOTTOM = "-fx-alignment: bottom-right;" +
             "-fx-font-weight: bold;" +
-            "-fx-text-fill: #FFFFFF;" +
+            "-fx-text-fill: #000000;" +
             "-fx-background-radius:0em; " +
-            "-fx-background-color: #D3D3D3; " + "-fx-max-height: 50px;"
-            + "-fx-min-height: 50px; " +
+            "-fx-background-color: #D3D3D3; " +
+            "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px; " +
             "-fx-min-width: 1150px; " +
             "-fx-max-width: 1150px;";
 
+// ANNOTATION CARD
+    final public static String ANTN_CARD = "-fx-background-color: #FFD700"; // yellow post-it
+
+// ANNOTATION EDIT
+    final public static String LBL_STYLE = "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px; " +
+            "-fx-min-width: 250px; " +
+            "-fx-max-width: 250px; " +
+            "-fx-font-size: 14px;" +
+            " -fx-text-fill: #000000;" +
+            " -fx-font-family: 'Times New Roman';" +
+            "-fx-font-weight: bold;" ;
+
+    final public static String BTN_STYLE = "-fx-background-color: #a6a6a6; " +
+            "-fx-font-weight: bold;" +
+            "-fx-text-fill: #FFFFFF;" +
+            "-fx-max-height: 30px;" +
+            "-fx-min-height: 30px;" +
+            "-fx-min-width: 150px;" +
+            "-fx-max-width: 150px;" +
+            "-fx-background-radius: 50em; ";
+
+    //Título
+    final public static String TXT_STYLE1 = "-fx-max-height: 25px;" +
+            "-fx-min-height: 25px;" +
+            "-fx-min-width: 250px;" +
+            "-fx-max-width: 250px;" +
+            "-fx-background-color: #ffff80";
+
+    //Descrição
+    final public static String TXT_STYLE2 = "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px;" +
+            "-fx-min-width: 250px;" +
+            "-fx-max-width: 250px;" +
+            "-fx-background-color: #ffff80";
+
+    //DueDate
+    final public static String TXT_STYLE3 = "-fx-max-height: 25px;" +
+            "-fx-min-height: 25px;" +
+            "-fx-min-width: 100px;" +
+            "-fx-max-width: 100px;" +
+            "-fx-background-color: #ffff80";
+
 //    final public static String BTN_NEW = "-fx-position:absolute;" + "-fx-bottom:0;" + "-fx-width:100%;" + "-fx-height:60px;" +  "-fx-background:#6cf;";
+
+
+// SPRINT
+
+    final public static String SPRINT_PANE = "-fx-background-color: #B0E0E6;";
+
+    final public static String TASK_LABEL = "-fx-background-color: #588ed6;" +
+            "-fx-min-height: 40px; " +
+            "-fx-max-height: 40px; ";
+
+    final public static String BTN_ADDSPRINT = "-fx-alignment: bottom-center;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #000000;" +
+                    "-fx-background-radius:0em; " +
+                    "-fx-background-color: #D3D3D3; " +
+                    "-fx-max-height: 40px;" +
+                    "-fx-min-height: 40px;" +
+                    "-fx-min-width: 1150px;" +
+                    "-fx-max-width: 1150px;";
+
+// TASK EDIT
+
+    final public static String BTN_TASK = "-fx-background-color: #a6a6a6; " +
+            "-fx-font-weight: bold;" +
+            "-fx-text-fill: #FFFFFF;" +
+            "-fx-max-height: 30px;" +
+            "-fx-min-height: 30px;" +
+            "-fx-min-width: 150px;" +
+            "-fx-max-width: 150px;" +
+            "-fx-background-radius: 50em; ";
+
+    final public static String TXT_TASK = "-fx-background-color: #d6e0f5;" +
+            "-fx-max-height: 30px;" +
+            "-fx-min-height: 30px; " +
+            "-fx-min-width: 250px; " +
+            "-fx-max-width: 250px; ";
+
+    final public static String LBL_TASK = "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px; " +
+            "-fx-min-width: 250px; " +
+            "-fx-max-width: 250px; " +
+            "-fx-font-size: 14px;" +
+            " -fx-text-fill: #000000;" +
+            " -fx-font-family: 'Times New Roman';" +
+            "-fx-font-weight: bold;" ;
+
+
 }
-
-
 
