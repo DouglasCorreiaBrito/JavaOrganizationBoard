@@ -3,6 +3,7 @@ package br.com.job.view;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import br.com.job.control.MenuControl;
 import br.com.job.model.Schedule;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -11,9 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ScheduleBuilder extends Application {
+public class ScheduleBuilder extends Pane {
 
 	private Date dateToSchedule;
 	private Label labelDateToSchedule;
@@ -25,31 +27,21 @@ public class ScheduleBuilder extends Application {
 	private Button btnClose;
 	private GridPane pane;
 	private SimpleDateFormat sdf;
+	private MenuControl controller;
 	private static Stage stage;
 
-	public ScheduleBuilder(Date dateToSchedule) {
+	public ScheduleBuilder(Date dateToSchedule, MenuControl controller) {
+		this.controller = controller;
 		sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		
 		this.dateToSchedule = dateToSchedule;
-	}
-
-	@Override
-	public void start(Stage stage) throws Exception {
-		ScheduleBuilder.stage = stage;
 		initComponents();
 		initLayout();
 		initListeners();
-		Scene scene = new Scene(pane);
-		stage.setResizable(false);
-		stage.setTitle("Agende seu compromisso");
-		stage.setScene(scene);
-		stage.show();
-
 	}
 
 	private void initListeners() {
-		
-		btnClose.setOnAction(e-> stage.close());
+
+		btnClose.setOnAction(e -> controller.changeScreen(new CalendarPane(controller)));
 	}
 
 	private void initLayout() {
@@ -66,29 +58,21 @@ public class ScheduleBuilder extends Application {
 
 	private void initComponents() {
 		lbTitle = new Label("Título da tarefa");
-		lbTitle.setStyle("-fx-font-size: 24px;" +
-            " -fx-text-fill: #FFF;" +
-            " -fx-font-family: 'Times New Roman';");
-		
+		lbTitle.setStyle("-fx-font-size: 24px;" + " -fx-text-fill: #FFF;" + " -fx-font-family: 'Times New Roman';");
+
 		lbDesc = new Label("Descreva seu agendamento");
-		lbDesc.setStyle("-fx-font-size: 18px;" +
-            " -fx-text-fill: #FFF;" +
-            " -fx-font-family: 'Times New Roman';");
-		
+		lbDesc.setStyle("-fx-font-size: 18px;" + " -fx-text-fill: #FFF;" + " -fx-font-family: 'Times New Roman';");
+
 		taDesc = new TextArea();
 		tfTitle = new TextField();
 		labelDateToSchedule = new Label(" Você está agendando seu compromisso para: " + sdf.format(dateToSchedule));
-		labelDateToSchedule.setStyle("-fx-font-size: 18px;" +
-            " -fx-text-fill: #FFF;" +
-            " -fx-font-family: 'Times New Roman';");
+		labelDateToSchedule
+				.setStyle("-fx-font-size: 18px;" + " -fx-text-fill: #FFF;" + " -fx-font-family: 'Times New Roman';");
 		btnClose = new Button("Cancelar");
 		btnSave = new Button("Salvar");
 		pane = new GridPane();
 		pane.setPrefSize(600, 300);
-		pane.setStyle("-fx-background-color: #222222;"
-        		+ "-fx-border-color: white;"
-        		+ "-fx-border-width: 2;");
-		
+		pane.setStyle("-fx-background-color: #222222;" + "-fx-border-color: white;" + "-fx-border-width: 2;");
 
 	}
 

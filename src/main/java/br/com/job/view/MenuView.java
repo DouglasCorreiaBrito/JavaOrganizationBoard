@@ -42,7 +42,7 @@ public class MenuView extends FlowPane {
         btnSprint.setStyle(StyleUtils.BTN_MENU);
         btnAgenda.setStyle(StyleUtils.BTN_MENU);
         btnDesempenho.setStyle(StyleUtils.BTN_MENU);
-        btnLogout.setStyle(StyleUtils.BTN_MENU);
+        btnLogout.setStyle(StyleUtils.BTN_LOGOUT);
 
         btnAnnotation.setOnAction(e -> controller.changeScreen(new AnnotationPane(controller)));
 

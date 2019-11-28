@@ -2,6 +2,9 @@ package br.com.job.model;
 
 import java.util.Date;
 
+import br.com.job.dao.AnnotationDAO;
+import br.com.job.dao.TaskDAO;
+
 public class Annotation implements Persistent{
 
 	private int id;
@@ -60,5 +63,9 @@ public class Annotation implements Persistent{
 
 	public Persistent search() {
 		return null;
+	}
+	
+	public void save(boolean salvar) {
+		new AnnotationDAO().saveAnnotation(this, salvar);
 	}
 }

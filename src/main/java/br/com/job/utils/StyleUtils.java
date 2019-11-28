@@ -23,10 +23,10 @@ public class StyleUtils {
     final public static String BTN_LOGOUT = "-fx-background-color: #FF0000;" +
             "-fx-font-weight: bold;" +
             "-fx-text-fill: #FFFFFF;" +
-            "-fx-max-height: 30px;" +
-            "-fx-min-height: 30px;" +
-            "-fx-min-width: 100px;" +
-            "-fx-max-width: 100px;" +
+            "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px;" +
+            "-fx-min-width: 250px;" +
+            "-fx-max-width: 250px;" +
             "-fx-background-radius: 50em; ";
 
     final public static String USER_NAME = "-fx-max-height: 50px;" +
