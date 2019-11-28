@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import br.com.job.model.User;
+import br.com.job.utils.StyleUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -39,7 +40,7 @@ public class BaseStage extends Application{
 		basePane = new GridPane();
 		basePane.setMinSize( d.getWidth() * 0.75,d.getHeight() * 0.75);
 
-		basePane.setStyle("-fx-background-color: #444444;");
+		basePane.setStyle(StyleUtils.BASE_BLANK);
 
 		telaDaDireita = new Pane();
 		menu = new MenuView(basePane, telaDaDireita, loggedUser);

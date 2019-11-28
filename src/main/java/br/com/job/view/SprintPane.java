@@ -4,11 +4,13 @@ import br.com.job.control.MenuControl;
 import br.com.job.model.Sprint;
 import br.com.job.model.Status;
 import br.com.job.model.Task;
+import br.com.job.utils.StyleUtils;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class SprintPane extends FlowPane {
 
     public SprintPane(MenuControl controller) {
         this.controller = controller;
-        setStyle("-fx-background-color: #B0E0E6;");
+        setStyle(StyleUtils.SPRINT_PANE);
 
         setOrientation(Orientation.VERTICAL);
         setVgap(20);
@@ -59,9 +61,7 @@ public class SprintPane extends FlowPane {
             taskLabel.setMaxWidth(900);
             taskLabel.setMinWidth(900);
 
-            taskLabel.setStyle("-fx-background-color: #588ed6;" +
-                    "-fx-min-height: 40px; " +
-                    "-fx-max-height: 40px; ");
+            taskLabel.setStyle(StyleUtils.TASK_LABEL);
 
             taskLabel.setOnMouseClicked(event -> {
                 controller.changeScreen(new TaskEdit(controller, task));
@@ -70,13 +70,9 @@ public class SprintPane extends FlowPane {
             getChildren().add(taskLabel);
         }
 
-        Button btnNewTask = new Button("+");
-        btnNewTask.setStyle("-fx-background-radius: 0em; " +
-                "-fx-background-color: #588ed6; " +
-                "-fx-max-height: 40px;" +
-                "-fx-min-height: 40px; " +
-                "-fx-min-width: 40px; " +
-                "-fx-max-width: 40px; ");
+        Button btnNewTask = new Button("✚ Nova Sprint");
+        btnNewTask.setStyle(StyleUtils.BTN_ADDSPRINT);
+        btnNewTask.setTextAlignment(TextAlignment.CENTER);
 
         btnNewTask.setOnAction(e -> controller.changeScreen(new TaskEdit(controller)));
 
