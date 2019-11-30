@@ -92,17 +92,12 @@ public class TaskEdit extends GridPane {
             task.setTitle(txtTitle.getText());
             task.setDescription(txtDesc.getText());
             task.setStatus(selectStatus.getValue());
-            task.setHoursToSpend(Integer.parseInt(txtHoursToSpend.getText().replaceAll(":", "")));
-            task.setHoursSpent(Integer.parseInt(txtHoursSpent.getText().replaceAll(":", "")));
+            task.setHoursToSpend(1);
+            task.setHoursSpent(1);
             //task.setAssignee(new UserDAO().getUser("1"));
-            try {
-                task.setIniDate(dateFormat.parse(txtIniDate.getText()));
-                task.setEndDate(dateFormat.parse(txtEndDate.getText()));
-            } catch (ParseException ex) {
-                task.setIniDate(new Date());
-                task.setEndDate(new Date());
-                ex.printStackTrace();
-            }
+            task.setIniDate(new Date());
+            task.setEndDate(new Date());
+
             task.save(salvar);
             controller.changeScreen(new SprintPane(controller));
         });
@@ -119,9 +114,6 @@ public class TaskEdit extends GridPane {
         add(lblStatus, 0, 2);
         add(selectStatus, 1, 2);
 
-        add(lblEndDate, 0, 6);
-        add(txtEndDate, 1, 6);
-
         add(btnBack, 0, 7, 1, 4);
         add(btnSave, 1, 7, 1, 4);
 
@@ -131,11 +123,6 @@ public class TaskEdit extends GridPane {
             txtTitle.setText(task.getTitle());
             txtDesc.setText(task.getDescription());
             selectStatus.setValue(task.getStatus());
-            txtHoursToSpend.setText(hourFormat.format(task.getHoursToSpend()));
-            txtHoursSpent.setText(hourFormat.format(task.getHoursToSpend()));
-            txtAssignee.setText(task.getAssignee().getId() + " - " + task.getAssignee().getName());
-            txtIniDate.setText(task.getIniDate() == null ? "" : dateFormat.format(task.getIniDate()));
-            txtEndDate.setText(task.getEndDate() == null ? "" : dateFormat.format(task.getEndDate()));
         }
 
     }

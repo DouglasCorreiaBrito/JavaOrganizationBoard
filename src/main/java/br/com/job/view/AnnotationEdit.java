@@ -25,6 +25,7 @@ public class AnnotationEdit extends GridPane {
     Annotation annotation;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd");
 
     public AnnotationEdit(MenuControl controller) {
         this.controller = controller;
@@ -57,7 +58,6 @@ public class AnnotationEdit extends GridPane {
        // TextField txtDueDate = new TextField();
         DatePicker dpDueDate = new DatePicker();
 
-
         lblTitle.setStyle(StyleUtils.LBL_STYLE);
         lblDesc.setStyle(StyleUtils.LBL_STYLE);
         lblDueDate.setStyle(StyleUtils.LBL_STYLE);
@@ -72,8 +72,15 @@ public class AnnotationEdit extends GridPane {
 
         //TODO aplicar calendário para seleção de data no dueDate;
 
+        Button mostrarCt = new Button("Mostrar");
+
         Button btnBack = new Button("❮ Voltar");
         Button btnSave = new Button("Salvar ✔");
+
+        mostrarCt.setOnAction(e -> {
+            System.out.println("titulo: " + txtTitle.getText() + "" + txtDesc.getText());
+            System.out.println(sdf2.format(LocalDateToDate(dpDueDate.getValue())));
+        });
 
         btnBack.setOnAction(e -> {
         	System.out.println(dpDueDate.getValue());
@@ -105,6 +112,8 @@ public class AnnotationEdit extends GridPane {
 
         add(lblDueDate, 0, 0);
         add(dpDueDate, 1, 0);
+
+        add(mostrarCt, 3, 7);
 
         add(btnBack, 1, 7, 1, 4);
         add(btnSave, 2, 7, 1, 4);

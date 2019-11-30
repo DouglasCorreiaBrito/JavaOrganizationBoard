@@ -61,7 +61,7 @@ public class AnnotationDAO {
             PreparedStatement ps = con.getCon().prepareStatement(query);
 
             ps.setString(1, a.getTitle());
-            ps.setString(2, a.getDescription());
+            ps.setString(2, "desc: " +a.getDescription() );
             ps.setDate(3, new java.sql.Date(a.getExpireDate().getTime()));
 
             ps.executeUpdate();

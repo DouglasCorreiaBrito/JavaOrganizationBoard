@@ -27,7 +27,7 @@ public class StyleUtils {
             "-fx-min-height: 50px;" +
             "-fx-min-width: 250px;" +
             "-fx-max-width: 250px;" +
-            "-fx-background-radius: 50em; ";
+            "-fx-background-radius: 0em; ";
 
     final public static String USER_NAME = "-fx-max-height: 50px;" +
             "-fx-min-height: 50px; " +
