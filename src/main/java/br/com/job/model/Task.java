@@ -106,4 +106,8 @@ public class Task implements Persistent {
 	public void save(boolean salvar) {
 		new TaskDAO().saveTask(this, salvar);
 	}
+
+	public void saveTaskWithCalendar(boolean salvar) {
+		new TaskDAO().saveTaskWithCalendar(this, salvar);
+	}
 }

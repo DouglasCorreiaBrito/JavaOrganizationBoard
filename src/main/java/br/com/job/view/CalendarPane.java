@@ -5,11 +5,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 import br.com.job.control.MenuControl;
+import br.com.job.utils.StyleUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import jfxtras.scene.control.CalendarPicker;
 
 public class CalendarPane extends FlowPane {
@@ -22,7 +22,9 @@ public class CalendarPane extends FlowPane {
 
 	public CalendarPane(MenuControl controller) {
 		this.controller = controller;
-		setStyle("-fx-background-color: #00FF7F");
+		setStyle(StyleUtils.CALENDAR_PANE);
+		btnListschedule.setStyle(StyleUtils.CALENDAR_BTN_NEW);
+		btnschedule.setStyle(StyleUtils.CALENDAR_BTN_NEW);
 		loadCalendar(cp);
 		initListeners(cp, btnschedule);
 		getChildren().addAll(cp, btnschedule,btnListschedule);
@@ -37,10 +39,9 @@ public class CalendarPane extends FlowPane {
 			}
 		});
 
-//		btnschedule.setOnAction(e -> callScheduleBuilder(dateToSchedule));
 		btnschedule.setOnAction(e-> controller.changeScreen(new ScheduleBuilder(dateToSchedule,controller)));
 		
-		btnListschedule.setOnAction(e-> controller.changeScreen(new Scheduledcalendars(controller)));
+		btnListschedule.setOnAction(e-> controller.changeScreen(new ConsultCalendars(controller)));
 	}
 
 	private void loadCalendar(CalendarPicker cp) {
@@ -48,8 +49,9 @@ public class CalendarPane extends FlowPane {
 		cp.withShowTime(Boolean.TRUE);
 		Dimension d = BaseStage.getScreenResolution();
 		double width = d.getWidth() * 0.52;
-		double heigth = d.getHeight() * 0.40;
+		double heigth = d.getHeight() * 0.30;
 		cp.setMinSize(width, heigth);
+		cp.setStyle(StyleUtils.CALENDAR_PICKER);
 	}
 
 }

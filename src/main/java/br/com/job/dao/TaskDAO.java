@@ -1,18 +1,15 @@
 package br.com.job.dao;
 
-import br.com.job.model.Status;
-import br.com.job.model.Task;
-import br.com.job.model.User;
-import org.apache.commons.lang3.StringUtils;
-import org.w3c.dom.UserDataHandler;
-
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+
+import br.com.job.model.Status;
+import br.com.job.model.Task;
 
 public class TaskDAO {
 
@@ -76,5 +73,35 @@ public class TaskDAO {
         }
 
     }
+
+	public void saveTaskWithCalendar(Task task, boolean isUpdate) {
+
+        DBConnection con = new DBConnection();
+        try {
+            String query;
+            if(isUpdate)
+                query = "UPDATE tb_task set " +
+                        " title = ?, description = ?, status = ?, hoursToSpend = ?, hoursSpent = ?, assignee = ?, iniDate = ?, endDate = ?" +
+                        " where id = " + task.getId();
+            else
+                query = "INSERT INTO tb_task (title, description, status, hoursToSpend, hoursSpent, assignee, iniDate, endDate) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.getCon().prepareStatement(query);
+
+            ps.setString(1, task.getTitle());
+            ps.setString(2, task.getDescription());
+            ps.setString(3, "Open");
+            ps.setInt(4, 0);
+            ps.setInt(5, 0);
+            ps.setInt(6, 1);
+            ps.setDate(7, new java.sql.Date(task.getIniDate().getTime()));
+            ps.setDate(8, null);
+
+            ps.executeUpdate();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+
+    
+	}
 
 }

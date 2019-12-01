@@ -163,7 +163,45 @@ public class StyleUtils {
             " -fx-text-fill: #000000;" +
             " -fx-font-family: 'Times New Roman';" +
             "-fx-font-weight: bold;" ;
+    
+    
+    
+ // Gif
 
+    final public static String GIF =  
+    		"-fx-padding: 150px;"+
+            "-fx-border-insets: 150px;" +
+            "-fx-background-insets: 150px;";
+    
+ // Calendar PANE
 
+    final public static String CALENDAR_PANE = "-fx-background-color: #DCDCDC;";
+
+    final public static String CALENDAR_BTN_NEW = "-fx-background-radius:0em; " +
+            "-fx-background-color: #000000; " +
+            "-fx-margin: 50 50 50 50;"+
+            "-fx-max-height: 50px;" +
+            "-fx-min-height: 50px; " +
+            "-fx-min-width: 1150px; " +
+            "-fx-max-width: 1150px;"+
+            "-fx-text-fill: #F8F8FF;"+
+            "-fx-padding: 5px;"+
+            "-fx-border-insets: 5px;" +
+            "-fx-background-insets: 5px;";
+
+    final public static String CALENDAR_PICKER =
+    		"-fx-background-radius:0em; " +
+            "-fx-text-fill: #FFFFFF;";
+    
+    //ConsultCalendars
+
+    final public static String CONSULTCALENDARS = "-fx-background-color : linear-gradient(#bdc3c7,#2c3e50);";
+    final public static String TASK_CALENDAR = "-fx-background-color: #000000;"+
+            "-fx-max-height: 250px;" +
+            "-fx-min-height: 250px; " +
+            "-fx-min-width: 280px; " +
+            "-fx-max-width: 280px;" ;
+//    private double width = 250;
+//    private double height = 280;
 }
 
