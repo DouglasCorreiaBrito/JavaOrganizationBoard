@@ -3,7 +3,6 @@ package br.com.job.view;
 import br.com.job.control.MenuControl;
 import br.com.job.dao.TaskDAO;
 import br.com.job.model.Sprint;
-import br.com.job.model.Status;
 import br.com.job.model.Task;
 import br.com.job.utils.StyleUtils;
 import javafx.geometry.Orientation;
@@ -12,9 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SprintPane extends FlowPane {
 
